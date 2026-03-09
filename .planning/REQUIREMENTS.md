@@ -1,7 +1,7 @@
-# Requirements: Feather Starter Convex — Architecture Modernization
+# Requirements: Feather Starter Convex -- Architecture Modernization
 
 **Defined:** 2026-03-09
-**Core Value:** Developer velocity — new features are faster to build because every file has a clear, predictable home
+**Core Value:** Developer velocity -- new features are faster to build because every file has a clear, predictable home
 
 ## v1 Requirements
 
@@ -57,7 +57,7 @@ Deferred to future milestone. Tracked but not in current roadmap.
 
 ### Demo App
 
-- **DEMO-01**: A todolist app with tasks and projects built using the starter kit's feature folders, generators, shared schemas, and plugin-friendly patterns — demonstrating how the architecture works in practice
+- **DEMO-01**: A todolist app with tasks and projects built using the starter kit's feature folders, generators, shared schemas, and plugin-friendly patterns -- demonstrating how the architecture works in practice
 
 ## Out of Scope
 
@@ -73,15 +73,43 @@ Deferred to future milestone. Tracked but not in current roadmap.
 
 Which phases cover which requirements. Updated during roadmap creation.
 
-| Requirement | Phase | Status |
-|-------------|-------|--------|
-| — | — | — |
+| Requirement | Phase | Plan | Status |
+|-------------|-------|------|--------|
+| STRUCT-01 | Phase 1 | 01-03 | Pending |
+| STRUCT-02 | Phase 1 | 01-02 | Pending |
+| STRUCT-03 | Phase 1 | 01-01 | Pending |
+| STRUCT-04 | Phase 1 | 01-03 | Pending |
+| STRUCT-05 | Phase 1 | 01-03 | Pending |
+| STRUCT-06 | Phase 1 | 01-02 | Pending |
+| STRUCT-07 | Phase 1 | 01-01 | Pending |
+| STRUCT-08 | Phase 1 | 01-02 | Pending |
+| VAL-01 | Phase 1 | 01-02 | Pending |
+| VAL-02 | Phase 1 | 01-02 | Pending |
+| VAL-03 | Phase 1 | 01-02 | Pending |
+| VAL-04 | Phase 1 | 01-02 | Pending |
+| PLUG-01 | Phase 1 | 01-04 | Pending |
+| PLUG-02 | Phase 1 | 01-04 | Pending |
+| PLUG-03 | Phase 1 | 01-04 | Pending |
+| PLUG-04 | Phase 1 | 01-05 | Pending |
+| PLUG-05 | Phase 1 | 01-05 | Pending |
+| PLUG-06 | Phase 1 | 01-05 | Pending |
+| PLUG-07 | Phase 1 | 01-05 | Pending |
+| PLUG-08 | Phase 1 | 01-05 | Pending |
+| PLUG-09 | Phase 1 | 01-05 | Pending |
+| PLUG-10 | Phase 1 | 01-05 | Pending |
+| GEN-01 | Phase 1 | 01-06 | Pending |
+| GEN-02 | Phase 1 | 01-06 | Pending |
+| GEN-03 | Phase 1 | 01-06 | Pending |
+| GEN-04 | Phase 1 | 01-06 | Pending |
+| DOC-01 | Phase 1 | 01-06 | Pending |
+| DOC-02 | Phase 1 | 01-06 | Pending |
+| DOC-03 | Phase 1 | 01-06 | Pending |
 
 **Coverage:**
-- v1 requirements: 25 total
-- Mapped to phases: 0
-- Unmapped: 25 ⚠️
+- v1 requirements: 29 total
+- Mapped to phases: 29
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-09*
-*Last updated: 2026-03-09 after initial definition*
+*Last updated: 2026-03-09 after roadmap revision (all requirements -> Phase 1)*
