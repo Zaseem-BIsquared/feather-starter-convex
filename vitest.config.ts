@@ -20,7 +20,15 @@ export default defineConfig({
   test: {
     environment: "jsdom",
     environmentMatchGlobs: [["convex/**", "edge-runtime"]],
-    server: { deps: { inline: ["convex-test", "feather-testing-convex"] } },
+    server: {
+      deps: {
+        inline: [
+          "convex-test",
+          "feather-testing-convex",
+          "@xixixao/uploadstuff",
+        ],
+      },
+    },
     globals: true,
     setupFiles: ["./src/test-setup.ts"],
     // Scheduled Stripe actions fail in convex-test (no Stripe configured).
