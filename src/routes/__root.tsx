@@ -26,9 +26,12 @@ export const Route = createRootRouteWithContext<{
     const router = useRouter();
     const matchWithTitle = [...router.state.matches]
       .reverse()
-      .find((d) => (d as any).routeContext?.title);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .find((d) => (d.context as Record<string, any>)?.title);
     const title =
-      (matchWithTitle as any)?.routeContext?.title || "Convex SaaS";
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (matchWithTitle?.context as Record<string, any>)?.title ||
+      "Convex SaaS";
 
     return (
       <>
