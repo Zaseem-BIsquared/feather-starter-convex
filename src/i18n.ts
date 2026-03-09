@@ -8,6 +8,9 @@ const languages = ["es", "en"] as const;
 // List of languages your application supports.
 export const supportedLangs = [...languages];
 
+// Namespace list -- plugins add their own namespace here.
+const ns = ["common", "auth", "dashboard", "settings", "billing", "onboarding"];
+
 i18n
   // load translation using http -> see /public/locales
   // learn more: https://github.com/i18next/i18next-http-backend
@@ -21,7 +24,12 @@ i18n
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
     fallbackLng: "en",
+    ns,
+    defaultNS: "common",
     debug: true,
+    backend: {
+      loadPath: "/locales/{{lng}}/{{ns}}.json",
+    },
   });
 
 export default i18n;

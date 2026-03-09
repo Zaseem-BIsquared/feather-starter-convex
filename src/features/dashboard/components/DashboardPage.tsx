@@ -5,7 +5,7 @@ import { cn } from "@/utils/misc.js";
 import { buttonVariants } from "@/ui/button-util";
 
 export function DashboardPage() {
-  const { t } = useTranslation();
+  const { t } = useTranslation("dashboard");
 
   return (
     <div className="flex h-full w-full bg-secondary px-6 py-8 dark:bg-black">
