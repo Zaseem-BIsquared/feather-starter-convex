@@ -3,7 +3,8 @@ import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { test, seedPlans, seedSubscription } from "@cvx/test.setup";
 import { renderWithRouter } from "@/test-helpers";
-import BillingSettings, { Route } from "./_layout.settings.billing";
+import { BillingSettings } from "@/features/billing";
+import { Route } from "./_layout.settings.billing";
 
 describe("Route.beforeLoad", () => {
   it("pre-fetches plans and returns the correct context", async () => {

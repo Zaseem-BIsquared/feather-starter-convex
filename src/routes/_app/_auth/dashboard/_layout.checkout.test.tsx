@@ -2,7 +2,8 @@ import { describe, expect, it } from "vitest";
 import { screen, waitFor } from "@testing-library/react";
 import { test, seedPlans, seedSubscription } from "@cvx/test.setup";
 import { renderWithRouter } from "@/test-helpers";
-import DashboardCheckout, { Route } from "./_layout.checkout";
+import { CheckoutPage } from "@/features/billing";
+import { Route } from "./_layout.checkout";
 
 describe("Route.beforeLoad", () => {
   it("returns the correct title", () => {
@@ -19,7 +20,7 @@ test("pro subscription shows checkout completed", async ({
   const { proPlanId } = await seedPlans(testClient);
   await seedSubscription(testClient, { userId, planId: proPlanId });
 
-  renderWithRouter(<DashboardCheckout />, client);
+  renderWithRouter(<CheckoutPage />, client);
 
   await waitFor(() => {
     expect(screen.getByText("Checkout completed!")).toBeInTheDocument();
@@ -36,7 +37,7 @@ test("free subscription shows error after timeout", async ({
 
   vi.useFakeTimers({ shouldAdvanceTime: true });
 
-  renderWithRouter(<DashboardCheckout />, client);
+  renderWithRouter(<CheckoutPage />, client);
 
   // Initially shows loading state
   await waitFor(() => {
@@ -58,7 +59,7 @@ test("free subscription shows error after timeout", async ({
 test("renders nothing when unauthenticated", async ({ testClient }) => {
   await seedPlans(testClient);
 
-  const { container } = renderWithRouter(<DashboardCheckout />, testClient, {
+  const { container } = renderWithRouter(<CheckoutPage />, testClient, {
     authenticated: false,
   });
 

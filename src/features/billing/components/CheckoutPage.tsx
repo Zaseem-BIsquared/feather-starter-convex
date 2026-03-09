@@ -2,7 +2,6 @@ import { Link } from "@tanstack/react-router";
 import { Loader2, BadgeCheck, AlertTriangle, ExternalLink } from "lucide-react";
 import { buttonVariants } from "@/ui/button-util";
 import { useEffect, useState } from "react";
-import { Route as DashboardRoute } from "@/routes/_app/_auth/dashboard/_layout.index";
 import { PLANS } from "@cvx/schema";
 import { useQuery } from "@tanstack/react-query";
 import { convexQuery } from "@convex-dev/react-query";
@@ -68,7 +67,7 @@ export function CheckoutPage() {
               </div>
               <div className="z-10 flex items-center justify-center">
                 <Link
-                  to={DashboardRoute.fullPath}
+                  to={"/dashboard"}
                   className={`${buttonVariants({ variant: "ghost", size: "sm" })} gap-2`}
                 >
                   <span className="text-sm font-medium text-primary/60 group-hover:text-primary">

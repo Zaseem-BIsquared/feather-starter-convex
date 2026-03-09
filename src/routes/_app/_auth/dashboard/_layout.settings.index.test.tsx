@@ -4,7 +4,8 @@ import userEvent from "@testing-library/user-event";
 import { test, seedPlans, seedSubscription } from "@cvx/test.setup";
 import { api } from "~/convex/_generated/api";
 import { renderWithRouter } from "@/test-helpers";
-import DashboardSettings, { Route } from "./_layout.settings.index";
+import { SettingsPage } from "@/features/settings";
+import { Route } from "./_layout.settings.index";
 
 describe("Route.beforeLoad", () => {
   it("returns the correct context", () => {
@@ -26,7 +27,7 @@ test("renders user info with username", async ({ client, testClient, userId }) =
     await ctx.db.patch(userId, { username: "testuser123" });
   });
 
-  renderWithRouter(<DashboardSettings />, client);
+  renderWithRouter(<SettingsPage />, client);
 
   await waitFor(() => {
     expect(screen.getByDisplayValue("testuser123")).toBeInTheDocument();
@@ -40,7 +41,7 @@ test("updates username via form", async ({ client, testClient, userId }) => {
     await ctx.db.patch(userId, { username: "oldname" });
   });
 
-  renderWithRouter(<DashboardSettings />, client);
+  renderWithRouter(<SettingsPage />, client);
 
   const user = userEvent.setup();
 
@@ -78,7 +79,7 @@ test("reset button visible when avatar exists", async ({
     });
   });
 
-  renderWithRouter(<DashboardSettings />, client);
+  renderWithRouter(<SettingsPage />, client);
 
   await waitFor(() => {
     expect(screen.getByRole("button", { name: /reset/i })).toBeInTheDocument();
@@ -99,7 +100,7 @@ test("renders avatar image when avatarUrl exists", async ({
     });
   });
 
-  renderWithRouter(<DashboardSettings />, client);
+  renderWithRouter(<SettingsPage />, client);
 
   await waitFor(() => {
     const img = screen.getByRole("img");
@@ -117,7 +118,7 @@ test("remove image button clears avatar", async ({ client, testClient, userId })
     });
   });
 
-  renderWithRouter(<DashboardSettings />, client);
+  renderWithRouter(<SettingsPage />, client);
 
   const user = userEvent.setup();
 
@@ -145,7 +146,7 @@ test("shows validation error for short username", async ({
     await ctx.db.patch(userId, { username: "testuser" });
   });
 
-  renderWithRouter(<DashboardSettings />, client);
+  renderWithRouter(<SettingsPage />, client);
 
   const user = userEvent.setup();
 
@@ -177,7 +178,7 @@ test("delete account double-check flow and confirm", async ({
     await ctx.db.patch(userId, { username: "testuser" });
   });
 
-  renderWithRouter(<DashboardSettings />, client);
+  renderWithRouter(<SettingsPage />, client);
 
   const user = userEvent.setup();
 
@@ -220,7 +221,7 @@ test("file input onChange handler processes files", async ({
     await ctx.db.patch(userId, { username: "testuser" });
   });
 
-  renderWithRouter(<DashboardSettings />, client);
+  renderWithRouter(<SettingsPage />, client);
 
   const user = userEvent.setup();
 
@@ -247,7 +248,7 @@ test("file input onChange early-returns when no files selected", async ({
     await ctx.db.patch(userId, { username: "testuser" });
   });
 
-  renderWithRouter(<DashboardSettings />, client);
+  renderWithRouter(<SettingsPage />, client);
 
   await waitFor(() => {
     expect(screen.getByDisplayValue("testuser")).toBeInTheDocument();
@@ -268,7 +269,7 @@ test("renders nothing when no user (unauthenticated)", async ({
 }) => {
   await seedPlans(testClient);
 
-  const { container } = renderWithRouter(<DashboardSettings />, testClient, {
+  const { container } = renderWithRouter(<SettingsPage />, testClient, {
     authenticated: false,
   });
 

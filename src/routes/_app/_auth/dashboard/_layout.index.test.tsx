@@ -2,7 +2,8 @@ import { describe, expect, it } from "vitest";
 import { screen, waitFor } from "@testing-library/react";
 import { test, seedPlans, seedSubscription } from "@cvx/test.setup";
 import { renderWithRouter } from "@/test-helpers";
-import Dashboard, { Route } from "./_layout.index";
+import { DashboardPage } from "@/features/dashboard";
+import { Route } from "./_layout.index";
 
 describe("Route.beforeLoad", () => {
   it("returns the correct context", () => {
@@ -23,7 +24,7 @@ test("renders dashboard page with get started content", async ({
   const { freePlanId } = await seedPlans(testClient);
   await seedSubscription(testClient, { userId, planId: freePlanId });
 
-  renderWithRouter(<Dashboard />, client);
+  renderWithRouter(<DashboardPage />, client);
 
   await waitFor(() => {
     expect(screen.getByText("Get Started")).toBeInTheDocument();

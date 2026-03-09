@@ -21,19 +21,20 @@ import { Button } from "@/ui/button";
 import { buttonVariants } from "@/ui/button-util";
 import { Logo } from "@/ui/logo";
 import { Link, useMatchRoute, useNavigate } from "@tanstack/react-router";
-import { Route as DashboardRoute } from "@/routes/_app/_auth/dashboard/_layout.index";
-import { Route as SettingsRoute } from "@/routes/_app/_auth/dashboard/_layout.settings.index";
-import { Route as BillingSettingsRoute } from "@/routes/_app/_auth/dashboard/_layout.settings.billing";
 import { User } from "~/types";
 import { PLANS } from "@cvx/schema";
+
+const DASHBOARD_PATH = "/dashboard" as const;
+const SETTINGS_PATH = "/dashboard/settings" as const;
+const BILLING_PATH = "/dashboard/settings/billing" as const;
 
 export function Navigation({ user }: { user: User }) {
   const signOut = useSignOut();
   const matchRoute = useMatchRoute();
   const navigate = useNavigate();
-  const isDashboardPath = matchRoute({ to: DashboardRoute.fullPath });
-  const isSettingsPath = matchRoute({ to: SettingsRoute.fullPath });
-  const isBillingPath = matchRoute({ to: BillingSettingsRoute.fullPath });
+  const isDashboardPath = matchRoute({ to: DASHBOARD_PATH });
+  const isSettingsPath = matchRoute({ to: SETTINGS_PATH });
+  const isBillingPath = matchRoute({ to: BILLING_PATH });
 
   if (!user) {
     return null;
@@ -44,7 +45,7 @@ export function Navigation({ user }: { user: User }) {
       <div className="mx-auto flex w-full max-w-screen-xl items-center justify-between py-3">
         <div className="flex h-10 items-center gap-2">
           <Link
-            to={DashboardRoute.fullPath}
+            to={DASHBOARD_PATH}
             className="flex h-10 items-center gap-1"
           >
             <Logo />
@@ -117,7 +118,7 @@ export function Navigation({ user }: { user: User }) {
                       size="sm"
                       className="w-full"
                       onClick={() =>
-                        navigate({ to: BillingSettingsRoute.fullPath })
+                        navigate({ to: BILLING_PATH })
                       }
                     >
                       Upgrade to PRO
@@ -167,7 +168,7 @@ export function Navigation({ user }: { user: User }) {
 
               <DropdownMenuItem
                 className="group h-9 w-full cursor-pointer justify-between rounded-md px-2"
-                onClick={() => navigate({ to: SettingsRoute.fullPath })}
+                onClick={() => navigate({ to: SETTINGS_PATH })}
               >
                 <span className="text-sm text-primary/60 group-hover:text-primary group-focus:text-primary">
                   Settings
@@ -221,7 +222,7 @@ export function Navigation({ user }: { user: User }) {
           )}
         >
           <Link
-            to={DashboardRoute.fullPath}
+            to={DASHBOARD_PATH}
             className={cn(
               `${buttonVariants({ variant: "ghost", size: "sm" })} text-primary/80`,
             )}
@@ -236,7 +237,7 @@ export function Navigation({ user }: { user: User }) {
           )}
         >
           <Link
-            to={SettingsRoute.fullPath}
+            to={SETTINGS_PATH}
             className={cn(
               `${buttonVariants({ variant: "ghost", size: "sm" })} text-primary/80`,
             )}
@@ -251,7 +252,7 @@ export function Navigation({ user }: { user: User }) {
           )}
         >
           <Link
-            to={BillingSettingsRoute.fullPath}
+            to={BILLING_PATH}
             className={cn(
               `${buttonVariants({ variant: "ghost", size: "sm" })} text-primary/80`,
             )}

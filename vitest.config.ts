@@ -85,6 +85,10 @@ export default defineConfig({
         "src/ui/logo.tsx",
         "src/ui/language-switcher.tsx",
         "src/ui/theme-switcher.tsx",
+        // Pure re-exports (barrel files, no logic)
+        "src/features/**/index.ts",
+        // Navigation shell (Radix dropdown menus, not unit-testable)
+        "src/features/dashboard/components/Navigation.tsx",
         // Routes (thin wrappers, not coverage-worthy)
         "src/routes/**",
       ],

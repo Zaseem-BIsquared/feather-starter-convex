@@ -4,7 +4,8 @@ import userEvent from "@testing-library/user-event";
 import { test, seedPlans, seedSubscription } from "@cvx/test.setup";
 import { api } from "~/convex/_generated/api";
 import { renderWithRouter } from "@/test-helpers";
-import OnboardingUsername, { Route } from "./_layout.username";
+import { UsernamePage } from "@/features/onboarding";
+import { Route } from "./_layout.username";
 
 describe("Route.beforeLoad", () => {
   it("returns the correct title", () => {
@@ -17,7 +18,7 @@ test("renders welcome form", async ({ client, testClient, userId }) => {
   const { freePlanId } = await seedPlans(testClient);
   await seedSubscription(testClient, { userId, planId: freePlanId });
 
-  renderWithRouter(<OnboardingUsername />, client);
+  renderWithRouter(<UsernamePage />, client);
 
   await waitFor(() => {
     expect(
@@ -35,7 +36,7 @@ test("submits valid username", async ({ client, testClient, userId }) => {
   const { freePlanId } = await seedPlans(testClient);
   await seedSubscription(testClient, { userId, planId: freePlanId });
 
-  renderWithRouter(<OnboardingUsername />, client);
+  renderWithRouter(<UsernamePage />, client);
 
   const user = userEvent.setup();
 
@@ -64,7 +65,7 @@ test("shows validation error for short username", async ({
   const { freePlanId } = await seedPlans(testClient);
   await seedSubscription(testClient, { userId, planId: freePlanId });
 
-  renderWithRouter(<OnboardingUsername />, client);
+  renderWithRouter(<UsernamePage />, client);
 
   const user = userEvent.setup();
 
