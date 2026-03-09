@@ -216,6 +216,15 @@ Plugin extension points (append-only, minimal merge conflicts):
 
 Four CLI generators scaffold new code following project conventions.
 
+> **Scripted/CI usage:** All generators support non-interactive mode by passing arguments after `--`:
+> ```sh
+> npm run gen:feature -- --name my-feature
+> npm run gen:route -- --name analytics --authRequired
+> npm run gen:route -- --name landing    # authRequired defaults to true
+> npm run gen:convex-function -- --domain billing --type mutation --name createInvoice
+> npm run gen:form -- --name create-task --feature dashboard
+> ```
+
 ### Feature Generator
 
 Scaffolds a full feature with frontend components, hooks, tests, and Convex backend functions.
