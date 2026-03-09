@@ -30,6 +30,24 @@ gaps:
         issue: "TS6133 unused variable (1 error)"
     missing:
       - "Fix typecheck errors in route test files (add vitest types, cast Element to HTMLElement, remove unused vars)"
+  - truth: "Code generators produce working, test-passing scaffolded code"
+    status: failed
+    reason: "Feature test template (templates/feature/test.tsx.hbs) generates broken tests: wrong import path (@/test/setup instead of @/test-helpers), wrong test pattern (describe/it instead of test from @cvx/test.setup with client fixture), missing waitFor for async rendering. Generated tests fail typecheck and runtime."
+    artifacts:
+      - path: "templates/feature/test.tsx.hbs"
+        issue: "Wrong import @/test/setup (should be @/test-helpers), uses describe/it instead of test from @cvx/test.setup with client fixture"
+    missing:
+      - "Fix test template to use correct import path and project test conventions"
+  - truth: "Code generators work correctly in non-interactive (CI/scripted) contexts"
+    status: failed
+    reason: "Route generator crashes when stdin is piped (inquirer confirm prompt throws ERR_USE_AFTER_CLOSE). CLI bypass flags (npx plop route -- --name x --authRequired) work but are undocumented."
+    artifacts:
+      - path: "plopfile.js"
+        issue: "Route generator confirm prompt incompatible with non-TTY stdin"
+      - path: "README.md"
+        issue: "Generator docs don't mention -- bypass flag syntax for scripted usage"
+    missing:
+      - "Document -- bypass flag syntax for all generators in README"
 ---
 
 # Phase 1: Architecture Modernization Verification Report
