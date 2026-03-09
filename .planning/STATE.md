@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: phase-complete
-stopped_at: Completed 01-07-PLAN.md
-last_updated: "2026-03-09T12:20:07Z"
-last_activity: 2026-03-09 -- Completed plan 01-07 (Generators and Documentation)
+stopped_at: Completed 01-09-PLAN.md
+last_updated: "2026-03-09T12:56:08Z"
+last_activity: 2026-03-09 -- Completed plan 01-09 (Zod Validation Wiring)
 progress:
   total_phases: 1
   completed_phases: 1
-  total_plans: 7
-  completed_plans: 7
+  total_plans: 9
+  completed_plans: 9
   percent: 100
 ---
 
@@ -26,24 +26,24 @@ See: .planning/PROJECT.md (updated 2026-03-09)
 ## Current Position
 
 Phase: 1 of 1 (Architecture Modernization)
-Plan: 7 of 7 in current phase (01-07 complete)
+Plan: 9 of 9 in current phase (01-09 complete)
 Status: Phase Complete
-Last activity: 2026-03-09 -- Completed plan 01-07 (Generators and Documentation)
+Last activity: 2026-03-09 -- Completed plan 01-09 (Zod Validation Wiring)
 
 Progress: [██████████] 100%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 7
-- Average duration: 5.6min
-- Total execution time: 0.65 hours
+- Total plans completed: 9
+- Average duration: 5.0min
+- Total execution time: 0.70 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-architecture-modernization | 7/7 | 39min | 5.6min |
+| 01-architecture-modernization | 9/9 | 41min | 4.6min |
 
 **Recent Trend:**
 - Last 5 plans: -
@@ -79,6 +79,8 @@ Recent decisions affecting current work:
 - 01-07: Plop generators use skipIfExists for convex-function to avoid overwriting existing files
 - 01-07: Separate route templates for auth vs public (not conditional in one template)
 - 01-07: Pre-existing typecheck errors in route test files left as-is (out of scope)
+- 01-08: Pre-existing convex/http.ts typecheck error logged to deferred-items.md (out of scope)
+- 01-09: Only converted mutations with user-typed input to zCustomMutation (not v.id() or no-arg mutations)
 
 ### Pending Todos
 
@@ -92,6 +94,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-09T12:20:07Z
-Stopped at: Completed 01-07-PLAN.md (Phase 1 complete)
-Resume file: .planning/phases/01-architecture-modernization/01-07-SUMMARY.md
+Last session: 2026-03-09T12:56:08Z
+Stopped at: Completed 01-09-PLAN.md (Gap closure plans complete)
+Resume file: .planning/phases/01-architecture-modernization/01-09-SUMMARY.md
