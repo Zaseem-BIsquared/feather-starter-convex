@@ -1,0 +1,8 @@
+{
+  "label": "Paleta de Comandos",
+  "placeholder": "Escribe un comando o busca...",
+  "empty": "No se encontraron resultados.",
+  "navigation": "Navegacion",
+  "close": "para cerrar",
+  "select": "para seleccionar"
+}

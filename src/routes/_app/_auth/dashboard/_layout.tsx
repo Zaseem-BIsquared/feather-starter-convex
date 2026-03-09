@@ -4,6 +4,7 @@ import { Header } from "@/ui/header";
 import { useQuery } from "@tanstack/react-query";
 import { convexQuery } from "@convex-dev/react-query";
 import { api } from "@cvx/_generated/api";
+import { CommandPalette } from "@/features/command-palette";
 
 export const Route = createFileRoute("/_app/_auth/dashboard/_layout")({
   component: DashboardLayout,
@@ -18,6 +19,7 @@ function DashboardLayout() {
     <div className="flex min-h-[100vh] w-full flex-col bg-secondary dark:bg-black">
       <Navigation user={user} />
       <Header />
+      <CommandPalette />
       <Outlet />
     </div>
   );

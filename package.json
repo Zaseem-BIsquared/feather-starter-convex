@@ -38,6 +38,7 @@
     "@xixixao/uploadstuff": "^0.0.5",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "cmdk": "^1.1.1",
     "convex": "^1.32.0",
     "convex-helpers": "^0.1.114",
     "i18next": "^23.12.2",
