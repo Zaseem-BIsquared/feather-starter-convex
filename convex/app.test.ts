@@ -2,21 +2,8 @@ import { describe, expect } from "vitest";
 import { api } from "./_generated/api";
 import { test, seedPlans, seedSubscription } from "./test.setup";
 
-/**
- * Some mutations schedule Stripe actions (PREAUTH_createStripeCustomer,
- * cancelCurrentUserSubscriptions) which fail in the test environment because
- * Stripe isn't configured. convex-test runs scheduled functions automatically,
- * and when they fail, "Write outside of transaction" errors fire as unhandled
- * rejections. We suppress these at the process level.
- */
-function suppressHandler(reason: unknown) {
-  const msg = reason instanceof Error ? reason.message : String(reason);
-  if (msg.includes("Write outside of transaction")) return;
-  // Re-throw anything unexpected
-  throw reason;
-}
-
-process.on("unhandledRejection", suppressHandler);
+// Unhandled rejections from scheduled Stripe actions are suppressed
+// globally in src/test-setup.ts — no per-file handler needed.
 
 describe("getCurrentUser", () => {
   test("returns null when unauthenticated", async ({ testClient }) => {
@@ -84,6 +71,21 @@ describe("getCurrentUser", () => {
     const result = await client.query(api.app.getCurrentUser, {});
     expect(result!.avatarUrl).toBeUndefined();
   });
+
+  test("returns null when user doc is deleted but auth session exists", async ({
+    client,
+    userId,
+    testClient,
+  }) => {
+    // Delete the user doc so db.get(userId) returns null
+    await testClient.run(async (ctx: any) => {
+      await ctx.db.delete(userId);
+    });
+
+    const result = await client.query(api.app.getCurrentUser, {});
+    // convex-test serializes `undefined` as `null`
+    expect(result).toBeNull();
+  });
 });
 
 describe("updateUsername", () => {
@@ -148,6 +150,23 @@ describe("completeOnboarding", () => {
 
   test("does nothing when unauthenticated", async ({ testClient }) => {
     await testClient.mutation(api.app.completeOnboarding, {
+      username: "testuser",
+      currency: "usd",
+    });
+  });
+
+  test("returns early when user doc is deleted but auth session exists", async ({
+    client,
+    userId,
+    testClient,
+  }) => {
+    // Delete the user doc so db.get(userId) returns null
+    await testClient.run(async (ctx: any) => {
+      await ctx.db.delete(userId);
+    });
+
+    // Should not throw, just returns early
+    await client.mutation(api.app.completeOnboarding, {
       username: "testuser",
       currency: "usd",
     });
@@ -308,6 +327,21 @@ describe("deleteCurrentUserAccount", () => {
       ctx.db.query("authAccounts").collect(),
     );
     expect(accounts).toHaveLength(0);
+  });
+
+  test("throws when user doc is deleted but auth session exists", async ({
+    client,
+    userId,
+    testClient,
+  }) => {
+    // Delete the user doc so db.get(userId) returns null
+    await testClient.run(async (ctx: any) => {
+      await ctx.db.delete(userId);
+    });
+
+    await expect(
+      client.mutation(api.app.deleteCurrentUserAccount, {}),
+    ).rejects.toThrow("User not found");
   });
 
   test("does nothing when unauthenticated", async ({ testClient }) => {

@@ -66,6 +66,25 @@ export async function seedPlans(testClient: {
   return { freePlanId, proPlanId };
 }
 
+/** Seed plans + free subscription + optional username. Convenience for component tests. */
+export async function seedFreeUser(
+  testClient: { run: (fn: (ctx: any) => Promise<any>) => Promise<any> },
+  userId: string,
+  opts?: { username?: string; customerId?: string },
+) {
+  const { freePlanId, proPlanId } = await seedPlans(testClient);
+  await seedSubscription(testClient, { userId, planId: freePlanId });
+  if (opts?.username || opts?.customerId) {
+    await testClient.run(async (ctx: any) => {
+      await ctx.db.patch(userId, {
+        ...(opts?.username && { username: opts.username }),
+        ...(opts?.customerId && { customerId: opts.customerId }),
+      });
+    });
+  }
+  return { freePlanId, proPlanId };
+}
+
 /** Seed a subscription for a user. Returns the subscription ID. */
 export async function seedSubscription(
   testClient: { run: (fn: (ctx: any) => Promise<any>) => Promise<any> },

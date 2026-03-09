@@ -1,0 +1,38 @@
+import { describe, expect, it } from "vitest";
+import { screen, waitFor } from "@testing-library/react";
+import { test, seedPlans, seedSubscription } from "@cvx/test.setup";
+import { renderWithRouter } from "@/test-helpers";
+import Dashboard, { Route } from "./_layout.index";
+
+describe("Route.beforeLoad", () => {
+  it("returns the correct context", () => {
+    const context = Route.options.beforeLoad!({} as any);
+    expect(context).toEqual({
+      title: "Feather Starter - Dashboard",
+      headerTitle: "Dashboard",
+      headerDescription: "Manage your Apps and view your usage.",
+    });
+  });
+});
+
+test("renders dashboard page with get started content", async ({
+  client,
+  testClient,
+  userId,
+}) => {
+  const { freePlanId } = await seedPlans(testClient);
+  await seedSubscription(testClient, { userId, planId: freePlanId });
+
+  renderWithRouter(<Dashboard />, client);
+
+  await waitFor(() => {
+    expect(screen.getByText("Get Started")).toBeInTheDocument();
+  });
+
+  expect(
+    screen.getByText(
+      "Explore the Dashboard and get started with your first app.",
+    ),
+  ).toBeInTheDocument();
+  expect(screen.getByText(/go to settings/i)).toBeInTheDocument();
+});

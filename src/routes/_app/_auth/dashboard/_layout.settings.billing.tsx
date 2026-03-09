@@ -49,6 +49,7 @@ export default function BillingSettings() {
 
   const currency = getLocaleCurrency();
 
+  /* v8 ignore start — Stripe integration: handlers call external Stripe actions and perform browser redirects */
   const handleCreateSubscriptionCheckout = async () => {
     if (!user || !selectedPlanId) {
       return;
@@ -76,6 +77,7 @@ export default function BillingSettings() {
     }
     window.location.href = customerPortalUrl;
   };
+  /* v8 ignore stop */
 
   if (!user || !plans) {
     return null;

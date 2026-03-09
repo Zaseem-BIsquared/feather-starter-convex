@@ -23,6 +23,7 @@ if (!STRIPE_SECRET_KEY) {
 }
 */
 
+/* v8 ignore next 4 -- Stripe SDK instantiation */
 export const stripe = new Stripe(STRIPE_SECRET_KEY || "", {
   apiVersion: "2024-06-20",
   typescript: true,
@@ -61,6 +62,7 @@ export const PREAUTH_getUserById = internalQuery({
   },
 });
 
+/* v8 ignore start -- calls Stripe SDK (stripe.customers.create) */
 export const PREAUTH_createStripeCustomer = internalAction({
   args: {
     currency: currencyValidator,
@@ -85,6 +87,7 @@ export const PREAUTH_createStripeCustomer = internalAction({
     });
   },
 });
+/* v8 ignore stop */
 
 export const UNAUTH_getDefaultPlan = internalQuery({
   handler: async (ctx) => {
@@ -229,6 +232,7 @@ export const PREAUTH_deleteSubscription = internalMutation({
 /**
  * Creates a Stripe free tier subscription for a user.
  */
+/* v8 ignore start -- calls Stripe SDK (stripe.subscriptions.create) */
 export const PREAUTH_createFreeStripeSubscription = internalAction({
   args: {
     userId: v.id("users"),
@@ -269,6 +273,7 @@ export const PREAUTH_createFreeStripeSubscription = internalAction({
     });
   },
 });
+/* v8 ignore stop */
 
 export const getCurrentUserSubscription = internalQuery({
   args: {
@@ -303,6 +308,7 @@ export const getCurrentUserSubscription = internalQuery({
 /**
  * Creates a Stripe checkout session for a user.
  */
+/* v8 ignore start -- remaining functions call Stripe SDK */
 export const createSubscriptionCheckout = action({
   args: {
     userId: v.id("users"),
@@ -388,3 +394,4 @@ export const cancelCurrentUserSubscriptions = internalAction({
     });
   },
 });
+/* v8 ignore stop */

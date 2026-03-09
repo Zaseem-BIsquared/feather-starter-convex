@@ -1,15 +1,24 @@
+import { describe, expect, it } from "vitest";
 import { screen, waitFor } from "@testing-library/react";
 import { test, seedPlans, seedSubscription } from "@cvx/test.setup";
 import { renderWithRouter } from "@/test-helpers";
+import DashboardCheckout, { Route } from "./_layout.checkout";
+
+describe("Route.beforeLoad", () => {
+  it("returns the correct title", () => {
+    const context = Route.options.beforeLoad!({} as any);
+    expect(context).toEqual({ title: "Feather Starter - Checkout" });
+  });
+});
 
 test("pro subscription shows checkout completed", async ({
   client,
+  testClient,
   userId,
 }) => {
-  const { proPlanId } = await seedPlans(client);
-  await seedSubscription(client, { userId, planId: proPlanId });
+  const { proPlanId } = await seedPlans(testClient);
+  await seedSubscription(testClient, { userId, planId: proPlanId });
 
-  const { default: DashboardCheckout } = await import("./_layout.checkout");
   renderWithRouter(<DashboardCheckout />, client);
 
   await waitFor(() => {
@@ -19,14 +28,14 @@ test("pro subscription shows checkout completed", async ({
 
 test("free subscription shows error after timeout", async ({
   client,
+  testClient,
   userId,
 }) => {
-  const { freePlanId } = await seedPlans(client);
-  await seedSubscription(client, { userId, planId: freePlanId });
+  const { freePlanId } = await seedPlans(testClient);
+  await seedSubscription(testClient, { userId, planId: freePlanId });
 
   vi.useFakeTimers({ shouldAdvanceTime: true });
 
-  const { default: DashboardCheckout } = await import("./_layout.checkout");
   renderWithRouter(<DashboardCheckout />, client);
 
   // Initially shows loading state
@@ -49,15 +58,14 @@ test("free subscription shows error after timeout", async ({
 test("renders nothing when unauthenticated", async ({ testClient }) => {
   await seedPlans(testClient);
 
-  const { default: DashboardCheckout } = await import("./_layout.checkout");
   const { container } = renderWithRouter(<DashboardCheckout />, testClient, {
     authenticated: false,
   });
 
-  // Component returns null when no user
+  // Component returns null when no user — container stays empty
   await waitFor(
     () => {
-      expect(container.querySelector(".flex.h-full.w-full")).toBeNull();
+      expect(container.innerHTML).toBe("");
     },
     { timeout: 2000 },
   );
