@@ -1,57 +1,64 @@
-<h1 align="center">
-  Convex SaaS
-</h1>
+# Feather Starter (Convex)
 
-<div align="center">
-  <p>
-  A production-ready Convex Stack for your next SaaS application with Stripe integration, TanStack, Resend, Tailwindcss, and shadcn.
-  </p>
-</div>
+A lightweight, production-ready starter template for building SaaS applications with Convex.
 
-<div align="center">
-    <a href="https://convex-saas.netlify.app">Live Demo</a> |  <a href="https://github.com/get-convex/convex-saas/tree/main/docs">Documentation</a>
-  <div align="center"><br>
-  <a href="https://labs.convex.dev/convex-saas"> <img src="https://github.com/get-convex/convex-saas/blob/v1markchanges/public/images/convexsaas.png" alt="convex saas" /></a>
-</div>
-   
-  </p>
-</div>
+## Tech Stack
 
-# Features
+- **[Convex](https://convex.dev)** — Reactive, typesafe backend with auth and file storage
+- **[React](https://react.dev)** + **[Vite](https://vite.dev)** — Fast frontend tooling
+- **[TanStack Router](https://tanstack.com/router)** — Type-safe file-based routing
+- **[Stripe](https://stripe.com)** — Subscriptions and billing
+- **[Tailwind CSS](https://tailwindcss.com)** + **[shadcn/ui](https://ui.shadcn.com)** — Styling and components
+- **[Resend](https://resend.com)** + **[React Email](https://react.email)** — Transactional email
+- **i18n** — Internationalization support
 
-Features provided out of the box:
+## Features
 
-- 🧩 **Convex**: A complete, reactive, typesafe backend with authentication and file storage.
-- ⚡ **Vite**: Next-Gen Frontend Tooling.
-- 🛍️ **Stripe**: Subscription Plans, Customer Portal, and more.
-- 🔑 **Authentication**: Email Code and Social Logins.
-- 🎨 **TailwindCSS**: Utility-First CSS Framework.
-- 📐 **ShadCN**: Composable React components.
-- 🌙 **Easy Theming**: Switch between Light and Dark modes with ease.
-- 🗺️ **TanStack Router**: Simple Route Definitions.
-- 📧 **Resend**: Email for Developers.
-- 💌 **React Email**: Customizable Emails with React.
-- 📋 **Conform**: Type-Safe Form Validation based on Web Fundamentals.
-- 📥 **File Uploads**: Profile Picture Uploads with Convex.
-- 🌐 **I18N**: Internationalization for your App.
-- 🧰 **TanStack Development Tools**: Enhanced Development Experience.
-- 💅 **Modern UI**: Carefully crafted UI with a Modern Design System.
-- 🏕 **Custom Pages**: Landing, Onboarding, Dashboard and Admin Pages.
-- 📱 **Responsive**: Works on all devices, from Mobile to Desktop.
--
-
-## [Live Demo](https://convex-saas.netlify.app)
-
-> [!NOTE]
-> Convex SaaS is an Open Source Template that is a direct port of the amazing
-> work of [Daniel Kanem](https://twitter.com/DanielKanem) in [Remix SaaS](https://github.com/dev-xo/remix-saas).
-> As that template does, this one shares common bits of code with: [Indie
-> Stack](https://github.com/remix-run/indie-stack), [Epic
-> Stack](https://github.com/epicweb-dev/epic-stack), [Supa Stripe
-> Stack](https://github.com/rphlmr/supa-stripe-stack), and some other amazing
-> Open Source resources. Check them out, please!
+- 🔑 Email code and social login authentication
+- 🛍️ Stripe subscription plans and customer portal
+- 📥 File uploads with Convex storage
+- 🌙 Light / dark theme switching
+- 📱 Fully responsive design
+- 🏕 Landing, onboarding, dashboard, and admin pages
 
 ## Getting Started
 
-Check out the [Getting Started Documentation](https://github.com/get-convex/convex-saas/tree/main/docs) to get up
-and running.
+1. **Install dependencies:**
+
+   ```sh
+   npm install
+   ```
+
+2. **Set up Convex:**
+
+   ```sh
+   npx convex dev --configure=new --once
+   npx @convex-dev/auth
+   ```
+
+3. **Configure environment variables:**
+
+   ```sh
+   # Resend (email)
+   npx convex env set AUTH_RESEND_KEY re_...
+
+   # Stripe
+   npx convex env set STRIPE_SECRET_KEY sk_test_...
+   npx convex env set STRIPE_WEBHOOK_SECRET whsec_...
+   ```
+
+4. **Start the dev server:**
+
+   ```sh
+   npm start
+   ```
+
+   Open [http://localhost:5173](http://localhost:5173).
+
+## Documentation
+
+See the [`docs/`](./docs) directory for detailed setup and deployment guides.
+
+## License
+
+MIT

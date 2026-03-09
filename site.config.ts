@@ -2,10 +2,10 @@
  * Centralized site configuration, add whatever you need here.
  */
 export default {
-  siteTitle: "Convex SaaS",
+  siteTitle: "Feather Starter",
   siteDescription:
-    "A Lightweight, Production-Ready Convex Stack for your next SaaS Application.",
-  siteUrl: "https://convex.dev",
+    "A lightweight, production-ready starter template powered by Convex, React, and Stripe.",
+  siteUrl: "",
   siteImage: "/images/og-image.png",
   favicon: "/favicon.ico",
   twitterHandle: "",
