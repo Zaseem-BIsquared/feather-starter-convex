@@ -1,0 +1,37 @@
+{
+  "nav": {
+    "admin": "Administracion"
+  },
+  "title": "Gestion de Usuarios",
+  "description": "Gestionar cuentas de usuario, roles y acceso.",
+  "table": {
+    "user": "Usuario",
+    "email": "Correo",
+    "role": "Rol",
+    "status": "Estado",
+    "joined": "Registro",
+    "actions": "Acciones"
+  },
+  "detail": {
+    "title": "Detalles del Usuario",
+    "role": "Rol",
+    "status": "Estado",
+    "email": "Correo",
+    "username": "Nombre de usuario",
+    "joined": "Registro",
+    "subscription": "Suscripcion",
+    "noSubscription": "Sin suscripcion activa",
+    "enabled": "Habilitado",
+    "disabled": "Deshabilitado",
+    "enable": "Habilitar Cuenta",
+    "disable": "Deshabilitar Cuenta",
+    "back": "Volver a Usuarios"
+  },
+  "roles": {
+    "user": "Usuario",
+    "admin": "Administrador"
+  },
+  "unauthorized": "No tienes permiso para ver esta pagina.",
+  "noUsers": "No se encontraron usuarios.",
+  "loading": "Cargando..."
+}

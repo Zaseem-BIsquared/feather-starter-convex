@@ -15,6 +15,10 @@ export const ERRORS = {
     ENVS_NOT_INITIALIZED: "Environment variables not initialized.",
     SOMETHING_WENT_WRONG: "Something went wrong.",
   },
-  // Plugin errors go here:
-  // admin: { ... }
+  admin: {
+    UNAUTHORIZED: "You do not have admin privileges.",
+    USER_NOT_FOUND: "User not found.",
+    CANNOT_MODIFY_SELF: "Cannot modify your own account from admin panel.",
+    SOMETHING_WENT_WRONG: "Something went wrong in admin panel.",
+  },
 } as const;

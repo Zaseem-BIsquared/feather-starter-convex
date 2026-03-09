@@ -1,0 +1,37 @@
+{
+  "nav": {
+    "admin": "Admin"
+  },
+  "title": "User Management",
+  "description": "Manage user accounts, roles, and access.",
+  "table": {
+    "user": "User",
+    "email": "Email",
+    "role": "Role",
+    "status": "Status",
+    "joined": "Joined",
+    "actions": "Actions"
+  },
+  "detail": {
+    "title": "User Details",
+    "role": "Role",
+    "status": "Status",
+    "email": "Email",
+    "username": "Username",
+    "joined": "Joined",
+    "subscription": "Subscription",
+    "noSubscription": "No active subscription",
+    "enabled": "Enabled",
+    "disabled": "Disabled",
+    "enable": "Enable Account",
+    "disable": "Disable Account",
+    "back": "Back to Users"
+  },
+  "roles": {
+    "user": "User",
+    "admin": "Admin"
+  },
+  "unauthorized": "You do not have permission to view this page.",
+  "noUsers": "No users found.",
+  "loading": "Loading..."
+}

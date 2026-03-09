@@ -94,6 +94,9 @@ export default defineConfig({
         "src/utils/validators.ts",
         // Navigation shell (Radix dropdown menus, not unit-testable)
         "src/features/dashboard/components/Navigation.tsx",
+        // Admin plugin (no tests in plugin branch; tested via e2e when deployed)
+        "convex/admin/**",
+        "src/features/admin/**",
         // Routes (thin wrappers, not coverage-worthy)
         "src/routes/**",
       ],

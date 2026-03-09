@@ -1,6 +1,16 @@
 import { defineSchema, defineTable } from "convex/server";
 import { authTables } from "@convex-dev/auth/server";
-import { v } from "convex/values";
+import { v, Infer } from "convex/values";
+
+export const ROLES = {
+  USER: "user",
+  ADMIN: "admin",
+} as const;
+export const roleValidator = v.union(
+  v.literal(ROLES.USER),
+  v.literal(ROLES.ADMIN),
+);
+export type Role = Infer<typeof roleValidator>;
 
 const schema = defineSchema({
   ...authTables,
@@ -14,6 +24,8 @@ const schema = defineSchema({
     phone: v.optional(v.string()),
     phoneVerificationTime: v.optional(v.number()),
     isAnonymous: v.optional(v.boolean()),
+    role: v.optional(roleValidator),
+    disabled: v.optional(v.boolean()),
   }).index("email", ["email"]),
   devEmails: defineTable({
     to: v.array(v.string()),

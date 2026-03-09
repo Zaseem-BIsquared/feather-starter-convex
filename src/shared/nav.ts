@@ -21,6 +21,12 @@ export const navItems: NavItem[] = [
     i18nKey: "dashboard.nav.settings",
     to: "/dashboard/settings",
   },
+  {
+    label: "Admin",
+    i18nKey: "admin.nav.admin",
+    to: "/dashboard/admin",
+    authRequired: true,
+  },
   /* v8 ignore start -- import.meta.env.DEV is always true in test; production branch untestable */
   ...(import.meta.env.DEV
     ? [

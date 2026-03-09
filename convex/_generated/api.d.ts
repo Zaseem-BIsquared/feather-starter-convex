@@ -14,14 +14,12 @@ import type {
   FilterApi,
   FunctionReference,
 } from "convex/server";
+import type * as admin_mutations from "../admin/mutations.js";
+import type * as admin_queries from "../admin/queries.js";
 import type * as auth from "../auth.js";
 import type * as devEmails_mutations from "../devEmails/mutations.js";
 import type * as devEmails_queries from "../devEmails/queries.js";
-import type * as billing_actions from "../billing/actions.js";
-import type * as billing_queries from "../billing/queries.js";
-import type * as billing_stripe from "../billing/stripe.js";
 import type * as email_index from "../email/index.js";
-import type * as email_templates_subscriptionEmail from "../email/templates/subscriptionEmail.js";
 import type * as env from "../env.js";
 import type * as http from "../http.js";
 import type * as init from "../init.js";
@@ -42,14 +40,12 @@ import type * as users_queries from "../users/queries.js";
  * ```
  */
 declare const fullApi: ApiFromModules<{
+  "admin/mutations": typeof admin_mutations;
+  "admin/queries": typeof admin_queries;
   auth: typeof auth;
   "devEmails/mutations": typeof devEmails_mutations;
   "devEmails/queries": typeof devEmails_queries;
-  "billing/actions": typeof billing_actions;
-  "billing/queries": typeof billing_queries;
-  "billing/stripe": typeof billing_stripe;
   "email/index": typeof email_index;
-  "email/templates/subscriptionEmail": typeof email_templates_subscriptionEmail;
   env: typeof env;
   http: typeof http;
   init: typeof init;
