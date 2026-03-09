@@ -29,16 +29,20 @@ Decimal phases appear between their surrounding integers in numeric order.
   6. README, PROVIDERS.md, and per-feature READMEs document the architecture
   7. `npm run typecheck` and `npm test` pass with 100% coverage throughout
 
-Plans:
-- [ ] 01-01: Shared infrastructure and vitest glob fix
-- [ ] 01-02: Convex backend restructure and Zod validation wiring
-- [ ] 01-03: Frontend feature extraction (dashboard, billing, settings)
-- [ ] 01-04: Frontend feature extraction (remaining) and thin routes
-- [ ] 01-05: Plugin-friendly shared files (nav, i18n namespaces, error groups)
-- [ ] 01-06: Plugin infrastructure and plugin branches
-- [ ] 01-07: CLI generators and architecture documentation
+**Plans:** 9 plans
 
-**Plan dependency order:** 01-01 -> 01-02 -> 01-03 -> 01-04 -> 01-05 -> 01-06 -> 01-07
+Plans:
+- [x] 01-01: Shared infrastructure and vitest glob fix
+- [x] 01-02: Convex backend restructure and Zod validation wiring
+- [x] 01-03: Frontend feature extraction (dashboard, billing, settings)
+- [x] 01-04: Frontend feature extraction (remaining) and thin routes
+- [x] 01-05: Plugin-friendly shared files (nav, i18n namespaces, error groups)
+- [x] 01-06: Plugin infrastructure and plugin branches
+- [x] 01-07: CLI generators and architecture documentation
+- [ ] 01-08: Fix typecheck errors in route test files (gap closure)
+- [ ] 01-09: Wire zCustomMutation and zodToConvex for Zod validation (gap closure)
+
+**Plan dependency order:** 01-01 -> 01-02 -> 01-03 -> 01-04 -> 01-05 -> 01-06 -> 01-07; 01-08 and 01-09 are independent (wave 1)
 
 **Plan-to-requirement mapping:**
 
@@ -51,12 +55,14 @@ Plans:
 | 01-05 | PLUG-01, PLUG-02, PLUG-03 |
 | 01-06 | PLUG-04, PLUG-05, PLUG-06, PLUG-07, PLUG-08, PLUG-09, PLUG-10 |
 | 01-07 | GEN-01, GEN-02, GEN-03, GEN-04, DOC-01, DOC-02, DOC-03 |
+| 01-08 | STRUCT-08 (gap closure) |
+| 01-09 | VAL-02, VAL-04 (gap closure) |
 
 ## Progress
 
 **Execution Order:**
-Plans execute sequentially: 01-01 -> 01-02 -> 01-03 -> 01-04 -> 01-05 -> 01-06 -> 01-07
+Plans 01-01 through 01-07 executed sequentially (complete). Plans 01-08 and 01-09 are gap closure (parallel, wave 1).
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Architecture Modernization | 3/7 | In Progress|  |
+| 1. Architecture Modernization | 7/9 | Gap Closure |  |
