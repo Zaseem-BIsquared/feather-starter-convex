@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 01-03-PLAN.md
-last_updated: "2026-03-09T09:24:34Z"
-last_activity: 2026-03-09 -- Completed plan 01-03 (Frontend feature extraction)
+stopped_at: Completed 01-04-PLAN.md
+last_updated: "2026-03-09T09:33:35Z"
+last_activity: 2026-03-09 -- Completed plan 01-04 (Feature folder completion and route thinning)
 progress:
   total_phases: 1
   completed_phases: 0
   total_plans: 7
-  completed_plans: 3
-  percent: 42
+  completed_plans: 4
+  percent: 57
 ---
 
 # Project State
@@ -26,24 +26,24 @@ See: .planning/PROJECT.md (updated 2026-03-09)
 ## Current Position
 
 Phase: 1 of 1 (Architecture Modernization)
-Plan: 3 of 6 in current phase (01-03 complete)
+Plan: 4 of 6 in current phase (01-04 complete)
 Status: Executing
-Last activity: 2026-03-09 -- Completed plan 01-03 (Frontend feature extraction)
+Last activity: 2026-03-09 -- Completed plan 01-04 (Feature folder completion and route thinning)
 
-Progress: [████░░░░░░] 42%
+Progress: [██████░░░░] 57%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 3
-- Average duration: 4.7min
-- Total execution time: 0.23 hours
+- Total plans completed: 4
+- Average duration: 5.0min
+- Total execution time: 0.33 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-architecture-modernization | 3/6 | 14min | 4.7min |
+| 01-architecture-modernization | 4/6 | 20min | 5.0min |
 
 **Recent Trend:**
 - Last 5 plans: -
@@ -68,6 +68,8 @@ Recent decisions affecting current work:
 - 01-02: cancelCurrentUserSubscriptions is internalAction in billing/stripe.ts
 - 01-03: Kept Route.beforeLoad tests importing from original route files (routes not modified until 01-04)
 - 01-03: Fixed Element.focus() TS error in feature test copy by casting to HTMLElement
+- 01-04: Navigation uses string path constants instead of Route.fullPath imports (breaks circular feature/route dependency)
+- 01-04: Coverage excludes barrel exports (index.ts) and Navigation shell (Radix dropdown menus)
 
 ### Pending Todos
 
@@ -81,6 +83,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-09T09:24:34Z
-Stopped at: Completed 01-03-PLAN.md
-Resume file: .planning/phases/01-architecture-modernization/01-03-SUMMARY.md
+Last session: 2026-03-09T09:33:35Z
+Stopped at: Completed 01-04-PLAN.md
+Resume file: .planning/phases/01-architecture-modernization/01-04-SUMMARY.md

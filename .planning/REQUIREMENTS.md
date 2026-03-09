@@ -13,7 +13,7 @@ Requirements for this milestone. Each maps to roadmap phases.
 - [x] **STRUCT-02**: Convex backend is organized by domain (`convex/users/`, `convex/billing/`, `convex/uploads/`) with queries, mutations, and actions in separate files
 - [x] **STRUCT-03**: Cross-feature code lives in `src/shared/` (hooks, utils, schemas) with clear promotion rules (3+ features = shared)
 - [x] **STRUCT-04**: Route files are thin wrappers that import page components from feature folders
-- [ ] **STRUCT-05**: Tests are co-located with their source in feature folders
+- [x] **STRUCT-05**: Tests are co-located with their source in feature folders
 - [x] **STRUCT-06**: All `api.*` import paths are updated to reflect new Convex file structure
 - [x] **STRUCT-07**: vitest coverage config uses globs instead of hardcoded file paths
 - [x] **STRUCT-08**: TypeScript compilation and all existing tests pass after restructure
