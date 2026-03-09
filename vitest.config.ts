@@ -34,25 +34,20 @@ export default defineConfig({
     coverage: {
       provider: "v8",
       reporter: ["text", "lcov", "json-summary"],
-      // ── Testable source files only ──────────────────────────────
+      // ── Testable source files (glob-based for restructure resilience) ─
       include: [
-        "convex/app.ts",
-        "convex/schema.ts",
-        "convex/stripe.ts",
-        "errors.ts",
-        "src/utils/**",
+        "src/features/**/*.{ts,tsx}",
+        "src/shared/**/*.{ts,tsx}",
+        "src/utils/**/*.{ts,tsx}",
         "src/ui/button.tsx",
         "src/ui/button-util.ts",
         "src/ui/input.tsx",
         "src/ui/switch.tsx",
         "src/ui/use-double-check.ts",
-        "src/routes/_app/_auth/dashboard/_layout.index.tsx",
-        "src/routes/_app/_auth/dashboard/_layout.checkout.tsx",
-        "src/routes/_app/_auth/dashboard/_layout.settings.index.tsx",
-        "src/routes/_app/_auth/dashboard/_layout.settings.billing.tsx",
-        "src/routes/_app/_auth/onboarding/_layout.username.tsx",
+        "convex/**/*.ts",
+        "errors.ts",
       ],
-      // ── Stripe / external-service code & non-testable infra ────
+      // ── Non-testable infra & excluded source ──────────────────────
       exclude: [
         // Stripe & external service integrations
         "convex/http.ts",
@@ -62,6 +57,8 @@ export default defineConfig({
         "convex/auth.ts",
         "convex/auth.config.ts",
         "convex/env.ts",
+        // Seed / init scripts
+        "convex/init.ts",
         // Auto-generated
         "convex/_generated/**",
         // Test infrastructure
@@ -76,7 +73,7 @@ export default defineConfig({
         "src/routeTree.gen.ts",
         "src/i18n.ts",
         "src/vite-env.d.ts",
-        // Static config (no executable logic — V8 reports 0 coverable statements)
+        // Static config (no executable logic)
         "site.config.ts",
         // Type-only files
         "types.ts",
@@ -88,16 +85,8 @@ export default defineConfig({
         "src/ui/logo.tsx",
         "src/ui/language-switcher.tsx",
         "src/ui/theme-switcher.tsx",
-        // Route layouts & non-component routes
-        "src/routes/__root.tsx",
-        "src/routes/index.tsx",
-        "src/routes/_app.tsx",
-        "src/routes/_app/_auth.tsx",
-        "src/routes/_app/_auth/dashboard/_layout.tsx",
-        "src/routes/_app/_auth/dashboard/_layout.settings.tsx",
-        "src/routes/_app/_auth/dashboard/-ui.navigation.tsx",
-        "src/routes/_app/_auth/onboarding/_layout.tsx",
-        "src/routes/_app/login/**",
+        // Routes (thin wrappers, not coverage-worthy)
+        "src/routes/**",
       ],
       thresholds: {
         statements: 100,
