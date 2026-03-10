@@ -24,7 +24,7 @@ See: `.planning/milestones/v1.0-ROADMAP.md` for full details.
 - Integer phases (2, 3, 4...): Planned milestone work
 - Decimal phases (2.1, 2.2): Urgent insertions (marked with INSERTED)
 
-- [ ] **Phase 2: Auth & DX Infrastructure** - Password auth, dev mailbox, pre-commit hooks, and E2E test setup
+- [x] **Phase 2: Auth & DX Infrastructure** - Password auth, dev mailbox, pre-commit hooks, and E2E test setup (completed 2026-03-10)
 - [ ] **Phase 3: Tasks** - Complete task management with visibility, assignment, status workflow, and core views
 - [ ] **Phase 4: Projects** - Project CRUD with status lifecycle and project-task relationship
 - [ ] **Phase 5: Subtasks & Work Logs** - Child-of-task overlays with subtask promotion and time logging
@@ -122,7 +122,7 @@ Phases execute in numeric order: 2 -> 3 -> 4 -> 5 -> 6
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
 | 1. Architecture Modernization | v1.0 | 9/9 | Complete | 2026-03-09 |
-| 2. Auth & DX Infrastructure | v2.0 | 0/4 | Not started | - |
+| 2. Auth & DX Infrastructure | 4/4 | Complete   | 2026-03-10 | - |
 | 3. Tasks | v2.0 | 0/? | Not started | - |
 | 4. Projects | v2.0 | 0/? | Not started | - |
 | 5. Subtasks & Work Logs | v2.0 | 0/? | Not started | - |

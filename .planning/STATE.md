@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: CalmDo Core
 status: executing
-stopped_at: "Completed 02-01-PLAN.md"
-last_updated: "2026-03-10T03:56:00Z"
-last_activity: 2026-03-10 -- Completed plan 02-01 (email/password auth)
+stopped_at: "Completed 02-04-PLAN.md"
+last_updated: "2026-03-10T06:15:00Z"
+last_activity: 2026-03-10 -- Completed plan 02-04 (Playwright E2E tests) — Phase 2 complete
 progress:
   total_phases: 5
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 4
-  completed_plans: 2
-  percent: 10
+  completed_plans: 4
+  percent: 20
 ---
 
 # Project State
@@ -25,12 +25,12 @@ See: .planning/PROJECT.md (updated 2026-03-10)
 
 ## Current Position
 
-Phase: 2 of 6 (Auth & DX Infrastructure)
-Plan: 2 of 4 complete
-Status: Executing
-Last activity: 2026-03-10 -- Completed plan 02-01 (email/password auth)
+Phase: 2 of 6 (Auth & DX Infrastructure) -- COMPLETE
+Plan: 4 of 4 complete
+Status: Phase 2 complete, ready for Phase 3
+Last activity: 2026-03-10 -- Completed plan 02-04 (Playwright E2E tests)
 
-Progress: [██░░░░░░░░] 10%
+Progress: [██████████] 100% (Phase 2)
 
 ## Performance Metrics
 
@@ -41,9 +41,9 @@ Progress: [██░░░░░░░░] 10%
 - Commits: 65 | Files changed: 181 | Lines: +17,820 / -5,335
 
 **v2.0 Velocity:**
-- Total plans completed: 2
-- Average duration: 15min/plan
-- Total execution time: 31min
+- Total plans completed: 4
+- Average duration: 11min/plan
+- Total execution time: 44min
 
 ## Accumulated Context
 
@@ -61,6 +61,12 @@ Recent:
 - Reset provider id "password-reset" to avoid collision with "resend-otp"
 - convex/tsconfig.json lib upgraded ES2021 -> ES2023 for Error cause support
 - Login page restructured: password primary, OTP and GitHub as alternatives
+- Used public mutations for devEmails (ConvexHttpClient cannot call internal functions)
+- DEV_MAILBOX env var defaults to enabled; only "false" disables interception
+- Email interception stores plain HTML with token/expiry (not rendered React components)
+- E2E_CONVEX_URL env var with VITE_CONVEX_URL fallback for dev convenience
+- Chromium-only for faster local E2E runs
+- E2E verification checkpoint deferred (Task 3 of 02-04) — tests written but not yet run against live deployment
 
 ### Pending Todos
 
