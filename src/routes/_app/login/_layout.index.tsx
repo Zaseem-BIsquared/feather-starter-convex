@@ -6,6 +6,7 @@ import { Input } from "@/ui/input";
 import { Button } from "@/ui/button";
 import { useForm } from "@tanstack/react-form";
 import { PasswordForm } from "@/features/auth/components/PasswordForm";
+import { PasswordResetForm } from "@/features/auth/components/PasswordResetForm";
 
 import { useEffect, useState } from "react";
 import { Route as OnboardingUsernameRoute } from "@/routes/_app/_auth/onboarding/_layout.username";
@@ -19,9 +20,9 @@ export const Route = createFileRoute("/_app/login/_layout/")({
 });
 
 function Login() {
-  const [step, setStep] = useState<"main" | "otp" | { email: string }>(
-    "main",
-  );
+  const [step, setStep] = useState<
+    "main" | "otp" | { email: string } | "resetPassword"
+  >("main");
   const { isAuthenticated, isLoading } = useConvexAuth();
   const { data: user } = useQuery(convexQuery(api.users.queries.getCurrentUser, {}));
   const navigate = useNavigate();
@@ -40,7 +41,15 @@ function Login() {
   }, [user, isLoading, isAuthenticated, navigate]);
 
   if (step === "main") {
-    return <MainLoginForm onOtpFlow={() => setStep("otp")} />;
+    return (
+      <MainLoginForm
+        onOtpFlow={() => setStep("otp")}
+        onResetPassword={() => setStep("resetPassword")}
+      />
+    );
+  }
+  if (step === "resetPassword") {
+    return <PasswordResetForm onBack={() => setStep("main")} />;
   }
   if (step === "otp") {
     return <OtpLoginForm onSubmit={(email) => setStep({ email })} />;
@@ -48,7 +57,13 @@ function Login() {
   return <VerifyForm email={step.email} />;
 }
 
-function MainLoginForm({ onOtpFlow }: { onOtpFlow: () => void }) {
+function MainLoginForm({
+  onOtpFlow,
+  onResetPassword,
+}: {
+  onOtpFlow: () => void;
+  onResetPassword: () => void;
+}) {
   const { signIn } = useAuthActions();
 
   return (
@@ -62,7 +77,7 @@ function MainLoginForm({ onOtpFlow }: { onOtpFlow: () => void }) {
         </p>
       </div>
 
-      <PasswordForm />
+      <PasswordForm onForgotPassword={onResetPassword} />
 
       <div className="relative flex w-full items-center justify-center">
         <span className="absolute w-full border-b border-border" />
