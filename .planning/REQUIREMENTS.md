@@ -9,7 +9,7 @@ Requirements for CalmDo Core milestone. Each maps to roadmap phases.
 
 ### Auth & DX Infrastructure
 
-- [ ] **AUTH-01**: User can sign up and sign in with email + password (in addition to existing OTP and GitHub OAuth)
+- [x] **AUTH-01**: User can sign up and sign in with email + password (in addition to existing OTP and GitHub OAuth)
 - [ ] **AUTH-02**: User can reset password via email link
 - [ ] **DX-01**: Dev mailbox captures all emails sent during development, viewable at a dev route (like Phoenix's /dev/mailbox)
 - [x] **DX-02**: Lefthook pre-commit hook enforces 100% test coverage on every commit
