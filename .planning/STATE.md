@@ -54,6 +54,4 @@ None.
 
 ### Tech Debt (carried forward)
 
-- Pre-existing TS2554 in convex/http.ts (Error constructor with cause)
-- plugin/infra-ci-github-actions branch local-only (needs workflow-scoped GitHub token)
-- NavItem.i18nKey defined but unused (designed deferral for plugin authors)
+- NavItem.i18nKey defined but unused (designed deferral — will resolve when i18n-aware nav rendering is built)

@@ -68,7 +68,7 @@ Developer velocity — new features are faster to build because every file has a
 - **Structure:** 6 frontend feature folders, 4 backend domain folders, shared schemas in `src/shared/schemas/`
 - **Plugins:** 3 plugin branches (infra-ci, command-palette, admin-panel), install via `scripts/plugin.sh`
 - **Generators:** 4 CLI generators scaffolding wired-up TypeScript files
-- **Known tech debt:** Pre-existing TS2554 in convex/http.ts, infra-ci branch local-only (needs workflow token), NavItem.i18nKey unused (designed deferral)
+- **Known tech debt:** NavItem.i18nKey unused in nav renderer (designed deferral — resolves when i18n-aware rendering is built)
 
 ## Constraints
 
