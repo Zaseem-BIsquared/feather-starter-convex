@@ -18,4 +18,14 @@ test.describe("Settings flows", () => {
       .assertText("Your Avatar");
   });
 
+  test("billing page loads", async ({ session }) => {
+    const email = uniqueEmail();
+
+    await signUp(session, email, "password123", "billinguser");
+
+    // Navigate to billing
+    await session
+      .visit("/dashboard/settings/billing")
+      .assertText("Billing");
+  });
 });

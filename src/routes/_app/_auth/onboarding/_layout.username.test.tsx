@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { test } from "@cvx/test.setup";
+import { test, seedPlans, seedSubscription } from "@cvx/test.setup";
 import { api } from "~/convex/_generated/api";
 import { renderWithRouter } from "@/test-helpers";
 import { UsernamePage } from "@/features/onboarding";
@@ -14,7 +14,10 @@ describe("Route.beforeLoad", () => {
   });
 });
 
-test("renders welcome form", async ({ client }) => {
+test("renders welcome form", async ({ client, testClient, userId }) => {
+  const { freePlanId } = await seedPlans(testClient);
+  await seedSubscription(testClient, { userId, planId: freePlanId });
+
   renderWithRouter(<UsernamePage />, client);
 
   await waitFor(() => {
@@ -29,7 +32,10 @@ test("renders welcome form", async ({ client }) => {
   ).toBeInTheDocument();
 });
 
-test("submits valid username", async ({ client }) => {
+test("submits valid username", async ({ client, testClient, userId }) => {
+  const { freePlanId } = await seedPlans(testClient);
+  await seedSubscription(testClient, { userId, planId: freePlanId });
+
   renderWithRouter(<UsernamePage />, client);
 
   const user = userEvent.setup();
@@ -44,7 +50,7 @@ test("submits valid username", async ({ client }) => {
   const continueButton = screen.getByRole("button", { name: /continue/i });
   await user.click(continueButton);
 
-  // Verify the backend mutation ran -- completeOnboarding sets the username
+  // Verify the backend mutation ran — completeOnboarding sets the username
   await waitFor(async () => {
     const updatedUser = await client.query(api.users.queries.getCurrentUser, {});
     expect(updatedUser?.username).toBe("newuser");
@@ -53,7 +59,12 @@ test("submits valid username", async ({ client }) => {
 
 test("shows validation error for short username", async ({
   client,
+  testClient,
+  userId,
 }) => {
+  const { freePlanId } = await seedPlans(testClient);
+  await seedSubscription(testClient, { userId, planId: freePlanId });
+
   renderWithRouter(<UsernamePage />, client);
 
   const user = userEvent.setup();

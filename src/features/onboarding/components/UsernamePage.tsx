@@ -9,6 +9,8 @@ import { convexQuery, useConvexMutation } from "@convex-dev/react-query";
 import { api } from "~/convex/_generated/api";
 import * as validators from "@/utils/validators";
 import { useEffect, useState } from "react";
+import { getLocaleCurrency } from "@/utils/misc";
+
 export function UsernamePage() {
   const { data: user } = useQuery(convexQuery(api.users.queries.getCurrentUser, {}));
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -25,6 +27,7 @@ export function UsernamePage() {
       setIsSubmitting(true);
       await completeOnboarding({
         username: value.username,
+        currency: getLocaleCurrency(),
       });
       setIsSubmitting(false);
     },

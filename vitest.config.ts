@@ -43,14 +43,14 @@ export default defineConfig({
         "src/ui/button.tsx",
         "src/ui/button-util.ts",
         "src/ui/input.tsx",
-        // switch.tsx excluded: Radix wrapper, was only tested through billing UI (now removed)
+        "src/ui/switch.tsx",
         "src/ui/use-double-check.ts",
         "convex/**/*.ts",
         "errors.ts",
       ],
       // ── Non-testable infra & excluded source ──────────────────────
       exclude: [
-        // Minimal infra files
+        // Stripe & external service integrations
         "convex/http.ts",
         "convex/email/**",
         "convex/otp/**",
@@ -90,8 +90,6 @@ export default defineConfig({
         "src/ui/theme-switcher.tsx",
         // Pure re-exports (barrel files, no logic)
         "src/features/**/index.ts",
-        "src/shared/schemas/index.ts",
-        "src/utils/validators.ts",
         // Navigation shell (Radix dropdown menus, not unit-testable)
         "src/features/dashboard/components/Navigation.tsx",
         // Routes (thin wrappers, not coverage-worthy)

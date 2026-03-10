@@ -1,12 +1,17 @@
 import { expect } from "vitest";
 import { screen, waitFor } from "@testing-library/react";
-import { test } from "@cvx/test.setup";
+import { test, seedPlans, seedSubscription } from "@cvx/test.setup";
 import { renderWithRouter } from "@/test-helpers";
 import { DashboardPage } from "./index";
 
 test("renders dashboard page with get started content", async ({
   client,
+  testClient,
+  userId,
 }) => {
+  const { freePlanId } = await seedPlans(testClient);
+  await seedSubscription(testClient, { userId, planId: freePlanId });
+
   renderWithRouter(<DashboardPage />, client);
 
   await waitFor(() => {

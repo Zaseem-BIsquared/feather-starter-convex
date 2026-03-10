@@ -5,6 +5,7 @@ describe("ERRORS", () => {
   it("has all expected error groups", () => {
     expect(ERRORS.auth).toBeDefined();
     expect(ERRORS.onboarding).toBeDefined();
+    expect(ERRORS.billing).toBeDefined();
     expect(ERRORS.common).toBeDefined();
   });
 
@@ -22,6 +23,9 @@ describe("ERRORS", () => {
     // that the type system enforces it (runtime check: Object.isFrozen
     // doesn't apply to 'as const', but we can verify values haven't changed)
     expect(ERRORS.auth.EMAIL_NOT_SENT).toBe("Unable to send email.");
+    expect(ERRORS.billing.MISSING_SIGNATURE).toBe(
+      "Unable to verify webhook signature.",
+    );
     expect(ERRORS.common.UNKNOWN).toBe("Unknown error.");
   });
 });

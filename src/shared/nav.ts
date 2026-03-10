@@ -21,6 +21,11 @@ export const navItems: NavItem[] = [
     i18nKey: "dashboard.nav.settings",
     to: "/dashboard/settings",
   },
+  {
+    label: "Billing",
+    i18nKey: "dashboard.nav.billing",
+    to: "/dashboard/settings/billing",
+  },
   /* v8 ignore start -- import.meta.env.DEV is always true in test; production branch untestable */
   ...(import.meta.env.DEV
     ? [

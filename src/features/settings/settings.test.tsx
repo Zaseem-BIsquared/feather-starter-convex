@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { screen, waitFor, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { test } from "@cvx/test.setup";
+import { test, seedPlans, seedSubscription } from "@cvx/test.setup";
 import { api } from "~/convex/_generated/api";
 import { renderWithRouter } from "@/test-helpers";
 import { SettingsPage } from "./index";
@@ -19,6 +19,8 @@ describe("SettingsRoute.beforeLoad", () => {
 });
 
 test("renders user info with username", async ({ client, testClient, userId }) => {
+  const { freePlanId } = await seedPlans(testClient);
+  await seedSubscription(testClient, { userId, planId: freePlanId });
   // Patch the existing user document (created by the test fixture)
   await testClient.run(async (ctx: any) => {
     await ctx.db.patch(userId, { username: "testuser123" });
@@ -32,6 +34,8 @@ test("renders user info with username", async ({ client, testClient, userId }) =
 });
 
 test("updates username via form", async ({ client, testClient, userId }) => {
+  const { freePlanId } = await seedPlans(testClient);
+  await seedSubscription(testClient, { userId, planId: freePlanId });
   await testClient.run(async (ctx: any) => {
     await ctx.db.patch(userId, { username: "oldname" });
   });
@@ -64,6 +68,8 @@ test("reset button visible when avatar exists", async ({
   testClient,
   userId,
 }) => {
+  const { freePlanId } = await seedPlans(testClient);
+  await seedSubscription(testClient, { userId, planId: freePlanId });
   // Seed user with an external image URL (avatarUrl derives from `image` field)
   await testClient.run(async (ctx: any) => {
     await ctx.db.patch(userId, {
@@ -84,6 +90,8 @@ test("renders avatar image when avatarUrl exists", async ({
   testClient,
   userId,
 }) => {
+  const { freePlanId } = await seedPlans(testClient);
+  await seedSubscription(testClient, { userId, planId: freePlanId });
   await testClient.run(async (ctx: any) => {
     await ctx.db.patch(userId, {
       username: "avataruser",
@@ -100,6 +108,8 @@ test("renders avatar image when avatarUrl exists", async ({
 });
 
 test("remove image button clears avatar", async ({ client, testClient, userId }) => {
+  const { freePlanId } = await seedPlans(testClient);
+  await seedSubscription(testClient, { userId, planId: freePlanId });
   await testClient.run(async (ctx: any) => {
     await ctx.db.patch(userId, {
       username: "testuser",
@@ -129,6 +139,8 @@ test("shows validation error for short username", async ({
   testClient,
   userId,
 }) => {
+  const { freePlanId } = await seedPlans(testClient);
+  await seedSubscription(testClient, { userId, planId: freePlanId });
   await testClient.run(async (ctx: any) => {
     await ctx.db.patch(userId, { username: "testuser" });
   });
@@ -159,6 +171,8 @@ test("delete account double-check flow and confirm", async ({
   testClient,
   userId,
 }) => {
+  const { freePlanId } = await seedPlans(testClient);
+  await seedSubscription(testClient, { userId, planId: freePlanId });
   await testClient.run(async (ctx: any) => {
     await ctx.db.patch(userId, { username: "testuser" });
   });
@@ -200,6 +214,8 @@ test("file input onChange handler processes files", async ({
   testClient,
   userId,
 }) => {
+  const { freePlanId } = await seedPlans(testClient);
+  await seedSubscription(testClient, { userId, planId: freePlanId });
   await testClient.run(async (ctx: any) => {
     await ctx.db.patch(userId, { username: "testuser" });
   });
@@ -225,6 +241,8 @@ test("file input onChange early-returns when no files selected", async ({
   testClient,
   userId,
 }) => {
+  const { freePlanId } = await seedPlans(testClient);
+  await seedSubscription(testClient, { userId, planId: freePlanId });
   await testClient.run(async (ctx: any) => {
     await ctx.db.patch(userId, { username: "testuser" });
   });
@@ -248,6 +266,8 @@ test("file input onChange early-returns when no files selected", async ({
 test("renders nothing when no user (unauthenticated)", async ({
   testClient,
 }) => {
+  await seedPlans(testClient);
+
   const { container } = renderWithRouter(<SettingsPage />, testClient, {
     authenticated: false,
   });

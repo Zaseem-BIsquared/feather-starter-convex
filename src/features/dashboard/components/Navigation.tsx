@@ -22,10 +22,12 @@ import { buttonVariants } from "@/ui/button-util";
 import { Logo } from "@/ui/logo";
 import { Link, useMatchRoute, useNavigate } from "@tanstack/react-router";
 import { User } from "~/types";
+import { PLANS } from "@cvx/schema";
 import { navItems } from "@/shared/nav";
 
 const DASHBOARD_PATH = "/dashboard" as const;
 const SETTINGS_PATH = "/dashboard/settings" as const;
+const BILLING_PATH = "/dashboard/settings/billing" as const;
 
 export function Navigation({ user }: { user: User }) {
   const signOut = useSignOut();
@@ -66,6 +68,12 @@ export function Navigation({ user }: { user: User }) {
                   <p className="text-sm font-medium text-primary/80">
                     {user?.username || ""}
                   </p>
+                  <span className="flex h-5 items-center rounded-full bg-primary/10 px-2 text-xs font-medium text-primary/80">
+                    {(user.subscription?.planKey &&
+                      user.subscription.planKey.charAt(0).toUpperCase() +
+                        user.subscription.planKey.slice(1)) ||
+                      "Free"}
+                  </span>
                 </div>
                 <span className="flex flex-col items-center justify-center">
                   <ChevronUp className="relative top-[3px] h-[14px] w-[14px] stroke-[1.5px] text-primary/60" />
@@ -98,6 +106,23 @@ export function Navigation({ user }: { user: User }) {
                 </div>
                 <Check className="h-[18px] w-[18px] stroke-[1.5px] text-primary/60" />
               </DropdownMenuItem>
+
+              {user.subscription?.planKey === PLANS.FREE && (
+                <>
+                  <DropdownMenuSeparator className="mx-0 my-2" />
+                  <DropdownMenuItem className="p-0 focus:bg-transparent">
+                    <Button
+                      size="sm"
+                      className="w-full"
+                      onClick={() =>
+                        navigate({ to: BILLING_PATH })
+                      }
+                    >
+                      Upgrade to PRO
+                    </Button>
+                  </DropdownMenuItem>
+                </>
+              )}
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
