@@ -9,8 +9,6 @@ export const clearAll = mutation({
   handler: async (ctx) => {
     const tables = [
       "users",
-      "plans",
-      "subscriptions",
       "devEmails",
       // Auth tables from @convex-dev/auth
       "authAccounts",

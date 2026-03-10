@@ -1,9 +1,6 @@
 import { describe, expect } from "vitest";
 import { api } from "../_generated/api";
-import { test, seedPlans, seedSubscription } from "../test.setup";
-
-// Unhandled rejections from scheduled Stripe actions are suppressed
-// globally in src/test-setup.ts — no per-file handler needed.
+import { test } from "../test.setup";
 
 describe("getCurrentUser", () => {
   test("returns null when unauthenticated", async ({ testClient }) => {
@@ -11,26 +8,11 @@ describe("getCurrentUser", () => {
     expect(result).toBeNull();
   });
 
-  test("returns user without subscription", async ({ client, userId }) => {
+  test("returns user without avatarUrl", async ({ client, userId }) => {
     const result = await client.query(api.users.queries.getCurrentUser, {});
     expect(result).toBeDefined();
     expect(result!._id).toBe(userId);
-    expect(result!.subscription).toBeUndefined();
     expect(result!.avatarUrl).toBeUndefined();
-  });
-
-  test("returns user with subscription and planKey", async ({
-    client,
-    testClient,
-    userId,
-  }) => {
-    const { freePlanId } = await seedPlans(testClient);
-    await seedSubscription(testClient, { userId, planId: freePlanId });
-
-    const result = await client.query(api.users.queries.getCurrentUser, {});
-    expect(result).toBeDefined();
-    expect(result!.subscription).toBeDefined();
-    expect(result!.subscription!.planKey).toBe("free");
   });
 
   test("returns avatarUrl from image field when no imageId", async ({

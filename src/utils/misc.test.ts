@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { cn, callAll, getLocaleCurrency } from "./misc";
+import { cn, callAll } from "./misc";
 
 describe("cn", () => {
   it("merges class names", () => {
@@ -41,19 +41,5 @@ describe("callAll", () => {
   it("works with zero functions", () => {
     const combined = callAll();
     expect(() => combined()).not.toThrow();
-  });
-});
-
-describe("getLocaleCurrency", () => {
-  it('returns "usd" when navigator.languages includes en-US', () => {
-    vi.stubGlobal("navigator", { languages: ["en-US", "en"] });
-    expect(getLocaleCurrency()).toBe("usd");
-    vi.unstubAllGlobals();
-  });
-
-  it('returns "eur" when navigator.languages does not include en-US', () => {
-    vi.stubGlobal("navigator", { languages: ["de-DE", "fr"] });
-    expect(getLocaleCurrency()).toBe("eur");
-    vi.unstubAllGlobals();
   });
 });

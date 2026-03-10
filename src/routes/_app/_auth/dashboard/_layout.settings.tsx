@@ -7,7 +7,6 @@ import {
 import { cn } from "@/utils/misc";
 import { buttonVariants } from "@/ui/button-util";
 import { Route as SettingsRoute } from "@/routes/_app/_auth/dashboard/_layout.settings.index";
-import { Route as BillingSettingsRoute } from "@/routes/_app/_auth/dashboard/_layout.settings.billing";
 
 export const Route = createFileRoute("/_app/_auth/dashboard/_layout/settings")({
   component: DashboardSettingsLayout,
@@ -16,7 +15,6 @@ export const Route = createFileRoute("/_app/_auth/dashboard/_layout/settings")({
 export default function DashboardSettingsLayout() {
   const matchRoute = useMatchRoute();
   const isSettingsPath = matchRoute({ to: SettingsRoute.fullPath });
-  const isBillingPath = matchRoute({ to: BillingSettingsRoute.fullPath });
   return (
     <div className="flex h-full w-full px-6 py-8">
       <div className="mx-auto flex h-full w-full max-w-screen-xl gap-12">
@@ -34,20 +32,6 @@ export default function DashboardSettingsLayout() {
               )}
             >
               General
-            </span>
-          </Link>
-          <Link
-            to={BillingSettingsRoute.fullPath}
-            className={cn(
-              `${buttonVariants({ variant: "ghost" })} ${isBillingPath && "bg-primary/5"} justify-start rounded-md`,
-            )}
-          >
-            <span
-              className={cn(
-                `text-sm text-primary/80 ${isBillingPath && "font-medium text-primary"}`,
-              )}
-            >
-              Billing
             </span>
           </Link>
         </div>

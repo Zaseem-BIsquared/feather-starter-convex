@@ -1,9 +1,6 @@
 import { describe, expect } from "vitest";
 import { api } from "../_generated/api";
-import { test, seedPlans, seedSubscription } from "../test.setup";
-
-// Unhandled rejections from scheduled Stripe actions are suppressed
-// globally in src/test-setup.ts — no per-file handler needed.
+import { test } from "../test.setup";
 
 describe("updateUsername", () => {
   test("updates the username for authenticated user", async ({
@@ -76,38 +73,11 @@ describe("removeUserImage", () => {
 });
 
 describe("deleteCurrentUserAccount", () => {
-  test("deletes user and subscription", async ({
+  test("deletes user", async ({
     client,
     userId,
     testClient,
   }) => {
-    const { freePlanId } = await seedPlans(testClient);
-    await seedSubscription(testClient, { userId, planId: freePlanId });
-
-    // The mutation schedules cancelCurrentUserSubscriptions (calls Stripe).
-    // Catch the expected failure from the scheduled action.
-    try {
-      await client.mutation(api.users.mutations.deleteCurrentUserAccount, {});
-      await testClient.finishInProgressScheduledFunctions();
-    } catch {
-      // Expected: the scheduled Stripe cancellation action fails
-    }
-
-    const user = await testClient.run(async (ctx: any) => ctx.db.get(userId));
-    expect(user).toBeNull();
-
-    const subs = await testClient.run(async (ctx: any) =>
-      ctx.db.query("subscriptions").collect(),
-    );
-    expect(subs).toHaveLength(0);
-  });
-
-  test("handles missing subscription gracefully", async ({
-    client,
-    userId,
-    testClient,
-  }) => {
-    // No subscription seeded — should still delete user
     await client.mutation(api.users.mutations.deleteCurrentUserAccount, {});
 
     const user = await testClient.run(async (ctx: any) => ctx.db.get(userId));

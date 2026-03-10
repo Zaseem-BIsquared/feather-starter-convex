@@ -4,7 +4,7 @@
 export default {
   siteTitle: "Feather Starter",
   siteDescription:
-    "A lightweight, production-ready starter template powered by Convex, React, and Stripe.",
+    "A lightweight, production-ready starter template powered by Convex and React.",
   siteUrl: "",
   siteImage: "/images/og-image.png",
   favicon: "/favicon.ico",
