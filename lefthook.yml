@@ -2,8 +2,6 @@ pre-commit:
   parallel: false
   commands:
     typecheck:
-      # NOTE: convex/tsconfig.json excluded due to pre-existing TS2554 error in convex/http.ts
-      # Re-add when fixed: && npx tsc -p convex/tsconfig.json --noEmit
-      run: npx tsc -p tsconfig.app.json --noEmit && npx tsc -p tsconfig.node.json --noEmit
+      run: npx tsc -p tsconfig.app.json --noEmit && npx tsc -p tsconfig.node.json --noEmit && npx tsc -p convex/tsconfig.json --noEmit
     test-coverage:
-      run: npx vitest run --coverage --dangerouslyIgnoreUnhandledErrors
+      run: npx vitest run --coverage
