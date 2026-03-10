@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: CalmDo Core
 status: in-progress
-last_updated: "2026-03-10T09:06:00Z"
-last_activity: 2026-03-10 -- Completed plan 02.1-01 (Stripe extraction from core)
+last_updated: "2026-03-10T09:22:19.751Z"
+last_activity: 2026-03-10 -- Completed Phase 02.1 (Stripe Plugin Extraction)
 progress:
   total_phases: 6
-  completed_phases: 1
-  total_plans: 6
-  completed_plans: 5
+  completed_phases: 2
+  total_plans: 8
+  completed_plans: 6
   percent: 83
 ---
 
@@ -20,16 +20,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-10)
 
 **Core value:** Developer velocity -- new features are faster to build because every file has a clear, predictable home
-**Current focus:** v2.0 CalmDo Core -- Phase 02.1 (Stripe Plugin Extraction)
+**Current focus:** v2.0 CalmDo Core -- Phase 3 (Tasks)
 
 ## Current Position
 
-Phase: 02.1 of 6 (Stripe Plugin Extraction)
-Plan: 1 of 2 complete
-Status: Plan 02.1-01 complete, ready for Plan 02.1-02
-Last activity: 2026-03-10 -- Completed plan 02.1-01 (Stripe extraction from core)
+Phase: 3 of 6 (Tasks)
+Plan: 0 of 2 complete
+Status: Phase 02.1 complete, ready for Phase 3
+Last activity: 2026-03-10 -- Completed Phase 02.1 (Stripe Plugin Extraction)
 
-Progress: [████████░░] 83% (Phase 02.1)
+Progress: [████████░░] 75% (v2.0)
 
 ## Performance Metrics
 
@@ -40,13 +40,14 @@ Progress: [████████░░] 83% (Phase 02.1)
 - Commits: 65 | Files changed: 181 | Lines: +17,820 / -5,335
 
 **v2.0 Velocity:**
-- Total plans completed: 5
-- Average duration: 10.8min/plan
-- Total execution time: 54min
+- Total plans completed: 6
+- Average duration: 9.8min/plan
+- Total execution time: 59min
 
 | Phase | Plan | Duration | Tasks | Files |
 |-------|------|----------|-------|-------|
 | 02.1 | 01 | 10min | 2 | 48 |
+| 02.1 | 02 | 5min | 3 | 0 |
 
 ## Accumulated Context
 
@@ -72,6 +73,7 @@ Recent:
 - E2E verification checkpoint deferred (Task 3 of 02-04) -- tests written but not yet run against live deployment
 - Kept predev script with no-op init.ts (enables plugin override, runs in <1s)
 - Added password/password-reset to auth provider cleanup in deleteCurrentUserAccount
+- [Phase 02.1]: Used Option B plugin creation strategy: branch from billing-free main with additive commits (purely additive diff)
 
 ### Pending Todos
 
@@ -85,6 +87,7 @@ Recent:
 
 - Phase 02.1 inserted after Phase 2: Stripe Plugin Extraction (URGENT) -- Stripe blocks team in India from running the starter; extract as optional plugin
 - Plan 02.1-01 completed: core is billing-free, all tests pass at 100%
+- Plan 02.1-02 completed: plugin/billing branch created, 3 existing plugins rebased onto billing-free main
 
 ### Blockers/Concerns
 

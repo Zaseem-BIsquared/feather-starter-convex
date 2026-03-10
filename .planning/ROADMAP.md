@@ -25,7 +25,7 @@ See: `.planning/milestones/v1.0-ROADMAP.md` for full details.
 - Decimal phases (2.1, 2.2): Urgent insertions (marked with INSERTED)
 
 - [x] **Phase 2: Auth & DX Infrastructure** - Password auth, dev mailbox, pre-commit hooks, and E2E test setup (completed 2026-03-10)
-- [ ] **Phase 02.1: Stripe Plugin Extraction** (INSERTED) - Extract billing/Stripe to optional plugin branch
+- [x] **Phase 02.1: Stripe Plugin Extraction** (INSERTED) - Extract billing/Stripe to optional plugin branch (completed 2026-03-10)
 - [ ] **Phase 3: Tasks** - Complete task management with visibility, assignment, status workflow, and core views
 - [ ] **Phase 4: Projects** - Project CRUD with status lifecycle and project-task relationship
 - [ ] **Phase 5: Subtasks & Work Logs** - Child-of-task overlays with subtask promotion and time logging
@@ -61,7 +61,7 @@ Plans:
   2. All tests pass with 100% coverage on billing-free main
   3. plugin/billing branch exists and merging it restores full billing functionality
   4. All 3 existing plugin branches (infra-ci, command-palette, admin-panel) work with billing-free main
-**Plans:** 2 plans
+**Plans:** 2/2 plans complete
 
 Plans:
 - [ ] 02.1-01-PLAN.md — Core extraction: delete billing files, edit shared files, fix tests and coverage
@@ -139,7 +139,7 @@ Phases execute in numeric order: 2 -> 02.1 -> 3 -> 4 -> 5 -> 6
 |-------|-----------|----------------|--------|-----------|
 | 1. Architecture Modernization | v1.0 | 9/9 | Complete | 2026-03-09 |
 | 2. Auth & DX Infrastructure | v2.0 | 4/4 | Complete | 2026-03-10 |
-| 02.1 Stripe Plugin Extraction | v2.0 | 1/2 | In progress | - |
+| 02.1 Stripe Plugin Extraction | 2/2 | Complete   | 2026-03-10 | - |
 | 3. Tasks | v2.0 | 0/2 | Not started | - |
 | 4. Projects | v2.0 | 0/? | Not started | - |
 | 5. Subtasks & Work Logs | v2.0 | 0/? | Not started | - |
