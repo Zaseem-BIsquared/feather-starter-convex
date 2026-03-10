@@ -76,6 +76,10 @@ Recent:
   - P4: Code quality improvements (15 items — auth guards, error constants, shim cleanup, etc.)
   - P5: Capture architecture proposals for post-v2.0 (event system, permissions, platform/modules split)
 
+### Roadmap Evolution
+
+- Phase 02.1 inserted after Phase 2: Stripe Plugin Extraction (URGENT) — Stripe blocks team in India from running the starter; extract as optional plugin
+
 ### Blockers/Concerns
 
 None.
