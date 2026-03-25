@@ -26,7 +26,7 @@ See: `.planning/milestones/v1.0-ROADMAP.md` for full details.
 
 - [x] **Phase 2: Auth & DX Infrastructure** - Password auth, dev mailbox, pre-commit hooks, and E2E test setup (completed 2026-03-10)
 - [x] **Phase 02.1: Stripe Plugin Extraction** (INSERTED) - Extract billing/Stripe to optional plugin branch (completed 2026-03-10)
-- [ ] **Phase 3: Tasks** - Complete task management with visibility, assignment, status workflow, and core views
+- [x] **Phase 3: Tasks** - Complete task management with visibility, assignment, status workflow, and core views (completed 2026-03-25)
 - [ ] **Phase 4: Projects** - Project CRUD with status lifecycle and project-task relationship
 - [ ] **Phase 5: Subtasks & Work Logs** - Child-of-task overlays with subtask promotion and time logging
 - [ ] **Phase 6: Activity Logs & Search** - Auto-generated audit trail, text search, and filter controls across all entities
@@ -81,7 +81,7 @@ Plans:
 
 Plans:
 - [x] 03-01-PLAN.md — Task backend: Zod schemas, Convex table, all mutations and queries with tests
-- [ ] 03-02-PLAN.md — Task frontend: components, routes, nav wiring, i18n, and frontend tests
+- [x] 03-02-PLAN.md — Task frontend: components, routes, nav wiring, i18n, and frontend tests
 
 ### Phase 4: Projects
 **Goal**: Users can organize tasks into projects with status lifecycle and filtered project views
@@ -140,7 +140,7 @@ Phases execute in numeric order: 2 -> 02.1 -> 3 -> 4 -> 5 -> 6
 | 1. Architecture Modernization | v1.0 | 9/9 | Complete | 2026-03-09 |
 | 2. Auth & DX Infrastructure | v2.0 | 4/4 | Complete | 2026-03-10 |
 | 02.1 Stripe Plugin Extraction | 2/2 | Complete    | 2026-03-10 | - |
-| 3. Tasks | v2.0 | 1/2 | In Progress|  |
+| 3. Tasks | v2.0 | 2/2 | Complete   | 2026-03-25 |
 | 4. Projects | v2.0 | 0/? | Not started | - |
 | 5. Subtasks & Work Logs | v2.0 | 0/? | Not started | - |
 | 6. Activity Logs & Search | v2.0 | 0/? | Not started | - |
