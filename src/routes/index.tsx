@@ -76,12 +76,12 @@ function Index() {
       </div>
 
       {/* Decorative shadow */}
-      <div className="base-grid fixed h-screen w-screen opacity-40" />
-      <div className="fixed bottom-0 h-screen w-screen bg-gradient-to-t from-[hsl(var(--card))] to-transparent" />
+      <div className="base-grid pointer-events-none fixed h-screen w-screen opacity-40" />
+      <div className="pointer-events-none fixed bottom-0 h-screen w-screen bg-gradient-to-t from-[hsl(var(--card))] to-transparent" />
       <img
         src={ShadowPNG}
         alt=""
-        className="fixed bottom-0 z-10 h-auto w-full opacity-80"
+        className="pointer-events-none fixed bottom-0 z-10 h-auto w-full opacity-80"
       />
     </div>
   );
