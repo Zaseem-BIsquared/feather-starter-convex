@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: CalmDo Core
 status: completed
-last_updated: "2026-03-10T09:26:41.173Z"
-last_activity: 2026-03-10 -- Completed Phase 02.1 (Stripe Plugin Extraction)
+last_updated: "2026-03-25T04:32:06.422Z"
+last_activity: 2026-03-25
 progress:
   total_phases: 6
   completed_phases: 2
   total_plans: 8
-  completed_plans: 6
+  completed_plans: 7
   percent: 75
 ---
 
@@ -25,21 +25,23 @@ See: .planning/PROJECT.md (updated 2026-03-10)
 ## Current Position
 
 Phase: 3 of 6 (Tasks)
-Plan: 0 of 2 complete
+Plan: 1 of 2 complete
 Status: Phase 02.1 complete, ready for Phase 3
-Last activity: 2026-03-10 -- Completed Phase 02.1 (Stripe Plugin Extraction)
+Last activity: 2026-03-25
 
 Progress: [████████░░] 75% (v2.0)
 
 ## Performance Metrics
 
 **v1.0 Velocity:**
+
 - Total plans completed: 9
 - Average duration: 4.6min/plan
 - Total execution time: 41min
 - Commits: 65 | Files changed: 181 | Lines: +17,820 / -5,335
 
 **v2.0 Velocity:**
+
 - Total plans completed: 6
 - Average duration: 9.8min/plan
 - Total execution time: 59min
@@ -48,6 +50,7 @@ Progress: [████████░░] 75% (v2.0)
 |-------|------|----------|-------|-------|
 | 02.1 | 01 | 10min | 2 | 48 |
 | 02.1 | 02 | 5min | 3 | 0 |
+| Phase 03 P01 | 10min | 3 tasks | 8 files |
 
 ## Accumulated Context
 
@@ -56,6 +59,7 @@ Progress: [████████░░] 75% (v2.0)
 See: .planning/PROJECT.md Key Decisions table (updated after v2.0 start)
 
 Recent:
+
 - Vertical slices only (schema+backend+frontend+tests per phase)
 - Skip org layer for v2.0 (user-scoped tasks)
 - Coarse granularity: 5 phases for 49 requirements
@@ -74,6 +78,8 @@ Recent:
 - Kept predev script with no-op init.ts (enables plugin override, runs in <1s)
 - Added password/password-reset to auth provider cleanup in deleteCurrentUserAccount
 - [Phase 02.1]: Used Option B plugin creation strategy: branch from billing-free main with additive commits (purely additive diff)
+- [Phase 03]: Used plain mutation for update (mixing v.id with Zod .shape causes TS errors)
+- [Phase 03]: Manually updated convex/_generated/api.d.ts (codegen requires running backend)
 
 ### Pending Todos
 

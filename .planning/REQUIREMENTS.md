@@ -17,16 +17,16 @@ Requirements for CalmDo Core milestone. Each maps to roadmap phases.
 
 ### Task Core
 
-- [ ] **TASK-01**: User can create a task with title, optional description (markdown), and priority (boolean: high or not)
-- [ ] **TASK-02**: User can view their tasks in a "My Tasks" list
-- [ ] **TASK-03**: User can edit a task's title, description, and priority
-- [ ] **TASK-04**: User can delete a task (with confirmation)
-- [ ] **TASK-05**: User can change a task's status through todo → in_progress → done
-- [ ] **TASK-06**: User can create a quick task (no project) that is private to them by default
-- [ ] **TASK-07**: Quick task auto-flips to shared visibility when assigned to another user
-- [ ] **TASK-08**: User can assign a task to any team member
-- [ ] **TASK-09**: Unassigned tasks appear in a "Team Pool" view for anyone to grab
-- [ ] **TASK-10**: User can drag-reorder tasks within a list (position field)
+- [x] **TASK-01**: User can create a task with title, optional description (markdown), and priority (boolean: high or not)
+- [x] **TASK-02**: User can view their tasks in a "My Tasks" list
+- [x] **TASK-03**: User can edit a task's title, description, and priority
+- [x] **TASK-04**: User can delete a task (with confirmation)
+- [x] **TASK-05**: User can change a task's status through todo → in_progress → done
+- [x] **TASK-06**: User can create a quick task (no project) that is private to them by default
+- [x] **TASK-07**: Quick task auto-flips to shared visibility when assigned to another user
+- [x] **TASK-08**: User can assign a task to any team member
+- [x] **TASK-09**: Unassigned tasks appear in a "Team Pool" view for anyone to grab
+- [x] **TASK-10**: User can drag-reorder tasks within a list (position field)
 
 ### Projects
 
