@@ -110,6 +110,10 @@ export const assign = mutation({
     if (args.assigneeId && args.assigneeId !== task.creatorId) {
       patch.visibility = "shared";
     }
+    // Auto-flip: unassigning makes task shared (available in Team Pool)
+    if (!args.assigneeId) {
+      patch.visibility = "shared";
+    }
 
     await ctx.db.patch(args.taskId, patch);
   },

@@ -47,6 +47,11 @@ export const ResendOTPPasswordReset = Email({
       await storeDevEmail([email], subject, html);
     }
 
+    // Skip Resend when API key not configured (local dev)
+    if (!provider.apiKey) {
+      return;
+    }
+
     const resend = new ResendAPI(provider.apiKey);
     const { error } = await resend.emails.send({
       from: AUTH_EMAIL ?? "Feather Starter <onboarding@resend.dev>",
