@@ -1,18 +1,10 @@
-import { describe, expect, it } from "vitest";
+import { expect } from "vitest";
 import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { test } from "@cvx/test.setup";
 import { api } from "~/convex/_generated/api";
 import { renderWithRouter } from "@/test-helpers";
 import { UsernamePage } from "@/features/onboarding";
-import { Route } from "./_layout.username";
-
-describe("Route.beforeLoad", () => {
-  it("returns the correct title", () => {
-    const context = Route.options.beforeLoad!({} as any);
-    expect(context).toEqual({ title: "Username" });
-  });
-});
 
 test("renders welcome form", async ({ client }) => {
   renderWithRouter(<UsernamePage />, client);

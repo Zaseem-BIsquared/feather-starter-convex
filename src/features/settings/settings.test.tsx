@@ -11,7 +11,6 @@ describe("SettingsRoute.beforeLoad", () => {
   it("returns the correct context", () => {
     const context = Route.options.beforeLoad!({} as any);
     expect(context).toEqual({
-      title: "Settings",
       headerTitle: "Settings",
       headerDescription: "Manage your account settings.",
     });

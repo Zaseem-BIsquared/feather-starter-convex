@@ -47,7 +47,7 @@ export function SettingsPage() {
 
   const usernameForm = useForm({
     defaultValues: {
-      username: user?.username,
+      username: user?.username ?? "",
     },
     /* v8 ignore start -- fallback `|| ""` never reached: input has `required` attr */
     onSubmit: async ({ value }) => {

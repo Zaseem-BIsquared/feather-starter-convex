@@ -148,9 +148,10 @@ File upload functionality using Convex's built-in storage. Currently embedded in
 
 2. Set up Convex:
    ```sh
-   npx convex dev --configure=new --once
+   npx convex dev --once
    npx @convex-dev/auth
    ```
+   > **Note:** Do not use `--configure=new` — it overwrites `convex/tsconfig.json`, breaking path aliases ([upstream bug](https://github.com/get-convex/convex-js/issues/144)). If you already ran it, restore with `git restore convex/tsconfig.json`.
 
 3. Configure environment variables in the Convex dashboard:
    ```sh

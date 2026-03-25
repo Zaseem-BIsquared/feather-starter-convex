@@ -1,9 +1,9 @@
-import { useRouteContext, useRouter } from "@tanstack/react-router";
+import { useRouteContext, useMatches } from "@tanstack/react-router";
 
 export function Header() {
-  const router = useRouter();
+  const matches = useMatches();
   const routeContext = useRouteContext({
-    from: router.state.matches.slice(-1)[0].routeId,
+    from: matches.slice(-1)[0].routeId,
   });
 
   return (

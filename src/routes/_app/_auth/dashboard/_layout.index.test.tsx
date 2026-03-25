@@ -9,7 +9,6 @@ describe("Route.beforeLoad", () => {
   it("returns the correct context", () => {
     const context = Route.options.beforeLoad!({} as any);
     expect(context).toEqual({
-      title: "Feather Starter - Dashboard",
       headerTitle: "Dashboard",
       headerDescription: "Manage your Apps and view your usage.",
     });
