@@ -1,0 +1,37 @@
+{
+  "nav": {
+    "myTasks": "Mis Tareas",
+    "teamPool": "Tareas del Equipo"
+  },
+  "page": {
+    "myTasks": {
+      "title": "Mis Tareas",
+      "description": "Tus tareas asignadas",
+      "empty": "No hay tareas. Crea una arriba!"
+    },
+    "teamPool": {
+      "title": "Tareas del Equipo",
+      "description": "Tareas sin asignar para el equipo",
+      "empty": "No hay tareas en el grupo."
+    }
+  },
+  "form": {
+    "placeholder": "Agregar una tarea...",
+    "submit": "Agregar"
+  },
+  "status": {
+    "todo": "Por Hacer",
+    "in_progress": "En Progreso",
+    "done": "Hecho"
+  },
+  "priority": {
+    "high": "Alta Prioridad",
+    "normal": "Normal"
+  },
+  "actions": {
+    "delete": "Eliminar",
+    "confirmDelete": "Estas seguro?",
+    "grab": "Tomar",
+    "assign": "Asignar"
+  }
+}

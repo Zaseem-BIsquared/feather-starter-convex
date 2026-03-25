@@ -17,6 +17,16 @@ export const navItems: NavItem[] = [
     to: "/dashboard",
   },
   {
+    label: "My Tasks",
+    i18nKey: "tasks.nav.myTasks",
+    to: "/dashboard/tasks",
+  },
+  {
+    label: "Team Pool",
+    i18nKey: "tasks.nav.teamPool",
+    to: "/dashboard/team-pool",
+  },
+  {
     label: "Settings",
     i18nKey: "dashboard.nav.settings",
     to: "/dashboard/settings",

@@ -1,0 +1,37 @@
+{
+  "nav": {
+    "myTasks": "My Tasks",
+    "teamPool": "Team Pool"
+  },
+  "page": {
+    "myTasks": {
+      "title": "My Tasks",
+      "description": "Your assigned tasks",
+      "empty": "No tasks yet. Create one above!"
+    },
+    "teamPool": {
+      "title": "Team Pool",
+      "description": "Unassigned tasks for the team",
+      "empty": "No tasks in the pool."
+    }
+  },
+  "form": {
+    "placeholder": "Add a task...",
+    "submit": "Add"
+  },
+  "status": {
+    "todo": "To Do",
+    "in_progress": "In Progress",
+    "done": "Done"
+  },
+  "priority": {
+    "high": "High Priority",
+    "normal": "Normal"
+  },
+  "actions": {
+    "delete": "Delete",
+    "confirmDelete": "Are you sure?",
+    "grab": "Grab",
+    "assign": "Assign"
+  }
+}

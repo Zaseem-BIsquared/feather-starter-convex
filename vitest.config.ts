@@ -89,6 +89,7 @@ export default defineConfig({
         "src/ui/language-switcher.tsx",
         "src/ui/theme-switcher.tsx",
         // Pure re-exports (barrel files, no logic)
+        "errors.ts",
         "src/features/**/index.ts",
         "src/shared/schemas/index.ts",
         "src/utils/validators.ts",
