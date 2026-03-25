@@ -15,6 +15,10 @@ export const ERRORS = {
     ENVS_NOT_INITIALIZED: "Environment variables not initialized.",
     SOMETHING_WENT_WRONG: "Something went wrong.",
   },
+  tasks: {
+    NOT_FOUND: "Task not found.",
+    INVALID_STATUS_TRANSITION: "Invalid status transition.",
+  },
   // Plugin errors go here:
   // admin: { ... }
 } as const;

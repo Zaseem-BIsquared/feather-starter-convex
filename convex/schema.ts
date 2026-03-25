@@ -1,6 +1,11 @@
 import { defineSchema, defineTable } from "convex/server";
 import { authTables } from "@convex-dev/auth/server";
 import { v } from "convex/values";
+import { zodToConvex } from "convex-helpers/server/zod4";
+import {
+  taskStatus,
+  taskVisibility,
+} from "../src/shared/schemas/tasks";
 
 const schema = defineSchema({
   ...authTables,
@@ -15,6 +20,21 @@ const schema = defineSchema({
     phoneVerificationTime: v.optional(v.number()),
     isAnonymous: v.optional(v.boolean()),
   }).index("email", ["email"]),
+  tasks: defineTable({
+    title: v.string(),
+    description: v.optional(v.string()),
+    priority: v.boolean(),
+    status: zodToConvex(taskStatus),
+    visibility: zodToConvex(taskVisibility),
+    creatorId: v.id("users"),
+    assigneeId: v.optional(v.id("users")),
+    projectId: v.optional(v.id("projects")),
+    position: v.number(),
+  })
+    .index("by_assignee", ["assigneeId"])
+    .index("by_visibility", ["visibility"])
+    .index("by_creator", ["creatorId"])
+    .index("by_assignee_status", ["assigneeId", "status"]),
   devEmails: defineTable({
     to: v.array(v.string()),
     subject: v.string(),
