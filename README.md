@@ -139,39 +139,53 @@ File upload functionality using Convex's built-in storage. Currently embedded in
 - npm
 - A Convex account (free at [convex.dev](https://convex.dev))
 
-### Setup
+### Quick Start (one command)
 
-1. Install dependencies:
-   ```sh
-   npm install
-   ```
+```sh
+bash <(curl -s https://raw.githubusercontent.com/siraj-samsudeen/feather-starter-convex/main/scripts/create.sh) my-app
+```
 
-2. Set up Convex:
-   ```sh
-   npx convex dev --once
-   npx @convex-dev/auth
-   ```
-   > **Note:** Do not use `--configure=new` — it overwrites `convex/tsconfig.json`, breaking path aliases ([upstream bug](https://github.com/get-convex/convex-js/issues/144)). If you already ran it, restore with `git restore convex/tsconfig.json`.
+This clones the repo, installs dependencies, asks for your app name, replaces all branding, initializes Convex (local deployment), and configures auth — all in one go.
 
-3. Configure environment variables in the Convex dashboard:
-   ```sh
-   # Email (Resend)
-   npx convex env set AUTH_RESEND_KEY re_...
+Then:
+```sh
+cd my-app
+npm start
+```
+Opens at [http://localhost:5173](http://localhost:5173).
 
-   # Stripe
-   npx convex env set STRIPE_SECRET_KEY sk_test_...
-   npx convex env set STRIPE_WEBHOOK_SECRET whsec_...
+### Manual Setup
 
-   # GitHub OAuth (optional)
-   npx convex env set AUTH_GITHUB_ID ...
-   npx convex env set AUTH_GITHUB_SECRET ...
-   ```
+If you've already cloned the repo:
 
-4. Start the dev server:
-   ```sh
-   npm start
-   ```
-   Opens at [http://localhost:5173](http://localhost:5173).
+```sh
+npm install
+npm run setup
+```
+
+The setup script will:
+1. Ask for your app name and description
+2. Replace "Feather Starter" branding across all files
+3. Initialize a Convex project with local deployment
+4. Restore `convex/tsconfig.json` path aliases ([upstream bug](https://github.com/get-convex/convex-js/issues/144))
+5. Configure auth via `@convex-dev/auth`
+
+### Optional Environment Variables
+
+Set these when you're ready (not required to get started):
+
+```sh
+# Email (Resend)
+npx convex env set AUTH_RESEND_KEY re_...
+
+# Stripe
+npx convex env set STRIPE_SECRET_KEY sk_test_...
+npx convex env set STRIPE_WEBHOOK_SECRET whsec_...
+
+# GitHub OAuth
+npx convex env set AUTH_GITHUB_ID ...
+npx convex env set AUTH_GITHUB_SECRET ...
+```
 
 ## Plugin System
 

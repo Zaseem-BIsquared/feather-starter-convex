@@ -7,6 +7,7 @@ import {
   Tailwind,
   Text,
 } from "@react-email/components";
+import { APP_NAME } from "@cvx/config";
 
 export function VerificationCodeEmail({
   code,
@@ -25,8 +26,7 @@ export function VerificationCodeEmail({
         <Head />
         <Container className="container px-20 font-sans">
           <Heading className="text-xl font-bold mb-4">
-            {/* TODO: Update with your app name */}
-            Sign in to Feather Starter
+            Sign in to {APP_NAME}
           </Heading>
           <Text className="text-sm">
             Please enter the following code on the sign in page.
